@@ -8,7 +8,7 @@ A student will select a Nigerian State/FCT and then an LGA/Area Council using st
 
 ## Current stage
 
-**Stage 1 — data foundation.** Do not treat this repository as nationally ready yet.
+**Stage 1 — data foundation and pilot validation.** Do not treat this repository as nationally ready yet.
 
 1. Verify source metadata, schemas, licences and access methods.
 2. Build and validate a Bayelsa/Sagbama pilot.
@@ -16,7 +16,17 @@ A student will select a Nigerian State/FCT and then an LGA/Area Council using st
 4. Package state-level teaching assets.
 5. Only then create the seven-chapter student notebook and Moodle pages.
 
-See `STATUS.md`.
+See `STATUS.md` and `checks/validation_summary.csv`.
+
+## Instructor pilot notebook
+
+Open the preparation notebook directly in Google Colab:
+
+https://colab.research.google.com/github/zubairgis/nigeria-population-demography-course/blob/main/notebooks/00_Prepare_Nigeria_Data.ipynb
+
+The notebook is intended for the instructor/data-preparation stage. It downloads only documented sources, builds the Bayelsa → Sagbama pilot, applies fractional-overlap WorldPop aggregation, checks settlement-name matching and health facilities, performs settlement/LGA reconciliation, and creates a pilot ZIP.
+
+The seven-chapter student notebook is intentionally a placeholder until this validation gate passes.
 
 ## Scientific rules
 
@@ -56,7 +66,10 @@ python scripts/01_download_sources.py --help
 python scripts/02_validate_boundaries.py --help
 ```
 
-For Colab/instructor use, open `notebooks/00_Prepare_Nigeria_Data.ipynb`.
+## Automated checks
+
+- `Validate data foundation`: compiles the preparation scripts and checks the configured live data endpoints.
+- `Sagbama vector smoke test`: downloads real small vector subsets for the pilot and verifies expected national counts, FCT handling, pilot identifiers and key source fields. Smoke-test downloads are temporary workflow artifacts, not committed third-party data.
 
 ## GitHub storage policy
 
