@@ -177,8 +177,7 @@ def main():
     building_status = settlements["building_count_status"].value_counts(dropna=False).to_dict()
     overlap_checks = sorted(set(settlements["component_overlap_check"].astype(str)))
 
-    # Do not publish v4.1-derived geometry/data while exact redistribution terms
-    # remain unresolved. Persist only validation-level aggregate summaries.
+    # Persist validation-level aggregate summaries only; raw third-party national data are not committed.
     lga_pop.to_csv(out_dir / "lga_population_summary.csv", index=False)
     reconciliation.to_csv(out_dir / "population_reconciliation.csv", index=False)
 
@@ -224,7 +223,8 @@ def main():
             "Health-facility inclusion does not imply operational status or service availability."
         ],
         "raw_third_party_data_committed": False,
-        "settlement_v4_1_derived_geometry_published": False,
+        "settlement_source_version": "GRID3 NGA Settlement Extents v3.1",
+        "settlement_v3_1_derived_geometry_published_in_git_history": False,
     }
     (out_dir / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
