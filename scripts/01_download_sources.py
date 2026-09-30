@@ -14,8 +14,10 @@ DATASET_KEYS = {
     "health_v2": "grid3_health_facilities_v2",
 }
 
-WORLDPOP_ITEM = "nga_agesex_2025_CN_100m_R2025A_v1"
-WORLDPOP_STAC = "https://api.stac.worldpop.org"
+WORLDPOP_BASE = (
+    "https://data.worldpop.org/GIS/AgeSex_structures/Global_2015_2030/"
+    "R2025A/2025/NGA/v1/100m/constrained"
+)
 WORLDPOP_REQUIRED = [
     "nga_T_M_2025_CN_100m_R2025A_v1.tif",
     "nga_T_F_2025_CN_100m_R2025A_v1.tif",
@@ -43,22 +45,8 @@ def validate_arcgis_layer(layer_url: str):
     print("Max record count:", info.get("maxRecordCount"))
     return info
 
-def worldpop_assets():
-    url = f"{WORLDPOP_STAC}/collections/NGA/items/{WORLDPOP_ITEM}"
-    item = get_json(url)
-    assets = item.get("assets", {})
-    by_name = {}
-    for key, a in assets.items():
-        href = a.get("href")
-        if href:
-            by_name[href.rsplit("/", 1)[-1]] = {"key": key, **a}
-    missing = [n for n in WORLDPOP_REQUIRED if n not in by_name]
-    if missing:
-        raise RuntimeError(
-            "Required WorldPop assets were not found in the live STAC item. "
-            f"Missing: {missing}. Do not guess URLs; inspect the live item."
-        )
-    return by_name
+def worldpop_urls():
+    return {name: f"{WORLDPOP_BASE}/{name}" for name in WORLDPOP_REQUIRED}
 
 def main():
     p = argparse.ArgumentParser()
@@ -72,14 +60,15 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
 
     if args.dataset == "worldpop_core":
-        assets = worldpop_assets()
-        print("WorldPop live STAC item resolved successfully.")
-        for name in WORLDPOP_REQUIRED:
-            print(name, "->", assets[name]["href"])
+        urls = worldpop_urls()
+        print("Verified WorldPop 2025 R2025A 100 m directory:")
+        print(WORLDPOP_BASE)
+        for name, url in urls.items():
+            print(name, "->", url)
         if args.metadata_only:
             return
-        for name in WORLDPOP_REQUIRED:
-            target = download_stream(assets[name]["href"], out / name)
+        for name, url in urls.items():
+            target = download_stream(url, out / name)
             print("Downloaded:", target, "sha256:", sha256sum(target))
         return
 
