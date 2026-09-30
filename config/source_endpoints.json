@@ -1,0 +1,22 @@
+{
+  "grid3_state_boundaries": {
+    "layer_url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/NGA_State_Boundaries_V2/FeatureServer/0",
+    "item_id": "c41532b720504f4799fe20438b7e3b7f"
+  },
+  "grid3_lga_boundaries": {
+    "layer_url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/NGA_LGA_Boundaries_2/FeatureServer/0",
+    "item_id": "2bb616a49ee84f409427cc2143787113"
+  },
+  "grid3_settlement_names": {
+    "layer_url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/Settlements_in_Nigeria/FeatureServer/0",
+    "item_id": "73d8522d1c4d4c75be6c10fa790c685c"
+  },
+  "grid3_settlement_extents_v4_1": {
+    "layer_url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_settlement_extents_v4_1/FeatureServer/0",
+    "item_id": null
+  },
+  "grid3_health_facilities_v2": {
+    "layer_url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0",
+    "item_id": "081506afb7f14af1a3f64130343a6a6a"
+  }
+}
