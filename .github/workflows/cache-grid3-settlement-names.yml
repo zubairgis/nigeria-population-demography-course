@@ -40,5 +40,6 @@ jobs:
             echo "No settlement-name changes to commit."
           else
             git commit -m "Cache GRID3 Nigeria settlement names"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
