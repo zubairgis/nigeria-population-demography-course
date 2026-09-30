@@ -1,0 +1,37 @@
+name: Sagbama full population pilot
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/sagbama-population-pilot.yml"
+  workflow_dispatch:
+
+jobs:
+  full-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install geospatial dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pandas geopandas pyogrio shapely pyproj rasterio exactextract requests pyarrow fiona
+
+      - name: Run full Sagbama population and demographic pilot
+        run: python scripts/09_run_sagbama_population_pilot.py
+
+      - name: Upload validation summaries only
+        uses: actions/upload-artifact@v4
+        with:
+          name: sagbama-population-pilot-summary
+          path: checks/population_pilot_output/
+          if-no-files-found: error
+          retention-days: 7
