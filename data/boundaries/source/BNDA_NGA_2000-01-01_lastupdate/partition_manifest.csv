@@ -1,0 +1,38 @@
+adm1cd,adm1nm,lga_count,path,bytes,git_blob_sha
+NGA001,Abia,17,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA001_Abia.geojson,64959,676dc2fd62a78f1ee0b9c1b2d3c069da841eee4b
+NGA002,Adamawa,21,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA002_Adamawa.geojson,277177,0d36738ce79becf9776dd0e8315a29bed472b13b
+NGA003,Akwa lbom,31,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA003_Akwa_lbom.geojson,220313,8bbbbea75403622c2e4b43a930b7f26396405879
+NGA004,Anambra,21,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA004_Anambra.geojson,59509,99dcbbce1cfcaa9b4deaf5209fb37b8953ac4a78
+NGA005,Bauchi,20,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA005_Bauchi.geojson,158701,0a09daa44697dcb80759760b5a540bbef538227d
+NGA006,Bayelsa,8,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA006_Bayelsa.geojson,45858,ea76a28181fbe60be21ad3b1b00077959014ff26
+NGA007,Benue,23,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA007_Benue.geojson,88663,2c7f69457a1a6472b5070b1349e45eaf51a5a8ee
+NGA008,Borno,27,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA008_Borno.geojson,507309,6b2d2f0427b791884a513c623a809a1b4adad327
+NGA009,Cross River,18,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA009_Cross_River.geojson,172693,00b94ac1724d680a3d5b3f999fb15cd95875f5ac
+NGA010,Delta,25,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA010_Delta.geojson,136027,baa6d521e57bab60df076478e5e59520735b82bd
+NGA011,Ebonyi,13,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA011_Ebonyi.geojson,50778,40b324ef8f33854c41ffe4dc9302c3e988f0b0a8
+NGA012,Edo,18,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA012_Edo.geojson,142118,ecd4edbfb84a115530a377b601b98795d76bb70e
+NGA013,Ekiti,16,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA013_Ekiti.geojson,49198,d4f8b6c7e41581394cfa7967b9f53fa0f365efad
+NGA014,Enugu,17,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA014_Enugu.geojson,44918,fa763b4df57024abf8ef280c4cd6e7dffd2e82da
+NGA015,Federal Capital Territory,6,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA015_Federal_Capital_Territory.geojson,27432,f16ac3989b993014ba5c3ea11afaebdb65a4912a
+NGA016,Gombe,11,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA016_Gombe.geojson,71522,d04bdb44499c7fb6e459a6a373a1c590dff3f2c4
+NGA017,Imo,27,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA017_Imo.geojson,170507,ea138c192d0aaf9a7f550d409102ef8311843104
+NGA018,Jigawa,27,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA018_Jigawa.geojson,280216,2c3ac009b0567b22df054c142071183a87fd3532
+NGA019,Kaduna,23,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA019_Kaduna.geojson,189732,b17823c8d61bf65f6de7b6530908b86b290d8271
+NGA020,Kano,44,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA020_Kano.geojson,226992,33a328e90da5a72580035b2dacd6477222dc9890
+NGA021,Katsina,34,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA021_Katsina.geojson,295459,dbde2312d5fbb957ac7ec405cac1bb25383f79e2
+NGA022,Kebbi,21,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA022_Kebbi.geojson,118678,29ded648189fbdb838a5bff9d1546fa901e27685
+NGA023,Kogi,21,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA023_Kogi.geojson,110128,6e6ab4588eab7f277bca268826311ddb8efcd11d
+NGA024,Kwara,16,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA024_Kwara.geojson,96450,215b6d69c8ac061b64169db3c50a6c7de9187039
+NGA025,Lagos,20,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA025_Lagos.geojson,103138,b6abe78f112f76a04e72858874018ebc34def659
+NGA026,Nassarawa,13,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA026_Nassarawa.geojson,87657,8c489100941f58042e038b88e1ea4ef6de6f417c
+NGA027,Niger,25,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA027_Niger.geojson,199131,2568eddd7d3012be36e325219b3b72da902b90a6
+NGA028,Ogun,20,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA028_Ogun.geojson,122342,9022574a3dc8b0d31d3fe7ca64fdf708531fbd82
+NGA029,Ondo,18,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA029_Ondo.geojson,124855,b631c37c6f59d729f4c6b549ecc19a1e83e96d39
+NGA030,Osun,30,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA030_Osun.geojson,101350,ef79909e9a989d3e3c119d8123813cc5a838e334
+NGA031,Oyo,33,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA031_Oyo.geojson,125290,b1eaf4c87abe4d6d160d5c5577b8c8cdf6168175
+NGA032,Plateau,17,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA032_Plateau.geojson,152282,68c0d0b4acd2be013e8dc64d9784dcd2de661c7b
+NGA033,Rivers,23,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA033_Rivers.geojson,85737,f6b5b3070836c8a61250deb1dc4968897f67d10c
+NGA034,Sokoto,23,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA034_Sokoto.geojson,111643,a0dda830fc30f5005f201c2ce77b44eaf00b9ac6
+NGA035,Taraba,16,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA035_Taraba.geojson,243391,5e7a1997c3717067009865d8c341f0d9145aef03
+NGA036,Yobe,17,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA036_Yobe.geojson,295239,f241fb45e56bb5463cdb507c505c1240c8d06839
+NGA037,Zamfara,14,data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/NGA037_Zamfara.geojson,94389,fdecee3d1354fbd2c8e1781450d3a55de12051a6
