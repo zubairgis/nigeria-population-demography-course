@@ -14,10 +14,12 @@
   "grid3_settlement_extents_v3_1": {
     "dataset_page": "https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1",
     "resource_page": "https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1/resource/0a22d6fc-7f1f-4f50-aead-09ef7be0455d",
-    "download_url": "https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1/resource/0a22d6fc-7f1f-4f50-aead-09ef7be0455d/download/",
+    "download_url": "https://github.com/zubairgis/nigeria-population-demography-course/releases/download/data-grid3-settlements-v3.1/GRID3_NGA_settlement_extents_v3_1_gpkg.zip",
     "doi": "https://doi.org/10.7916/x9xg-e262",
     "archive_name": "GRID3_NGA_settlement_extents_v3_1_gpkg.zip",
-    "expected_extent_file": "GRID3_NGA_settlement_extents_v3_1.gpkg"
+    "expected_extent_file": "GRID3_NGA_settlement_extents_v3_1.gpkg",
+    "official_download_url": "https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1/resource/0a22d6fc-7f1f-4f50-aead-09ef7be0455d/download/",
+    "github_release_url": "https://github.com/zubairgis/nigeria-population-demography-course/releases/tag/data-grid3-settlements-v3.1"
   },
   "grid3_health_facilities_v2": {
     "layer_url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0",
