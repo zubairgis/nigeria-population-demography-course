@@ -11,9 +11,14 @@
     "layer_url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/Settlements_in_Nigeria/FeatureServer/0",
     "item_id": "73d8522d1c4d4c75be6c10fa790c685c"
   },
-  "grid3_settlement_extents_v4_1": {
-    "layer_url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_settlement_extents_v4_1/FeatureServer/0",
-    "item_id": null
+  "grid3_settlement_extents_v3_1": {
+    "dataset_page": "https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1",
+    "resource_page": "https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1/resource/0a22d6fc-7f1f-4f50-aead-09ef7be0455d",
+    "download_url": "https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1/resource/0a22d6fc-7f1f-4f50-aead-09ef7be0455d/download/GRID3_NGA_settlement_extents_v3_1_gpkg.zip",
+    "doi": "https://doi.org/10.7916/x9xg-e262",
+    "archive_name": "GRID3_NGA_settlement_extents_v3_1_gpkg.zip",
+    "expected_extent_file": "GRID3_NGA_settlement_extents_v3_1.gpkg",
+    "expected_grid_file": "GRID3_NGA_settlement_grid_v3_1.gpkg"
   },
   "grid3_health_facilities_v2": {
     "layer_url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0",
