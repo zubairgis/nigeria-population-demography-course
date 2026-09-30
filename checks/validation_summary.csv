@@ -1,2 +1,8 @@
 check_id,status,details
-starter_repository,READY,Repository scaffold created; data validation not yet run
+starter_repository,PASS,Repository scaffold and Stage-1 files committed to main
+python_syntax,PASS,GitHub Actions run 36706549844 compiled scripts successfully on 2026-09-30
+grid3_endpoint_metadata,PASS,State LGA Settlement Names Settlement Extents v4.1 and Health Facilities v2.0 endpoints responded successfully in GitHub Actions run 36706549844
+worldpop_required_filenames,PASS,Six required 2025 R2025A 100m constrained age-sex filenames resolved by preparation script in GitHub Actions run 36706549844
+sagbama_vector_pilot,PENDING,Actual small vector downloads and Sagbama schema/coverage checks not yet completed
+sagbama_population_pilot,PENDING,Six WorldPop rasters and fractional-overlap LGA/settlement aggregation not yet completed
+settlement_v4_1_licence,PENDING,Exact v4.1 redistribution licence still requires confirmation before public data packaging
