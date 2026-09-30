@@ -27,7 +27,7 @@
   },
   "osm_drainage_geofabrik": {
     "dataset_page": "https://download.geofabrik.de/africa/nigeria.html",
-    "download_url": "https://download.geofabrik.de/africa/nigeria-latest.osm.pbf",
+    "download_url": "https://download.geofabrik.de/africa/nigeria-260901.osm.pbf",
     "classes": [
       "river",
       "stream",
@@ -35,6 +35,7 @@
       "drain"
     ],
     "source": "OpenStreetMap via Geofabrik Nigeria extract",
-    "licence": "ODbL 1.0"
+    "licence": "ODbL 1.0",
+    "snapshot_date": "2026-09-01"
   }
 }
