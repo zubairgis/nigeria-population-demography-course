@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/sagbama-building-pilot.yml"
+      - "scripts/05_download_open_buildings.py"
+      - "scripts/05_count_buildings.py"
+      - "scripts/10_run_sagbama_building_pilot.py"
   workflow_dispatch:
 
 jobs:
