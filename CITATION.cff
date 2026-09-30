@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this teaching repository, please cite the repository and the original data providers listed in the dataset manifest."
+title: "Estimating Population and Demographic Characteristics in Nigeria Using Google Colab"
+type: software
+authors:
+  - family-names: Islam
+    given-names: Zubairul
+version: 0.1.0-starter
+date-released: 2026-09-30
+license: MIT
