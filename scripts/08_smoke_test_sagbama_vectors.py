@@ -1,5 +1,6 @@
 from __future__ import annotations
 import json
+import requests
 from pathlib import Path
 from common import query_feature_layer_geojson
 
@@ -39,7 +40,7 @@ def main():
 
     state_url = ENDPOINTS["grid3_state_boundaries"]["layer_url"]
     lga_url = ENDPOINTS["grid3_lga_boundaries"]["layer_url"]
-    settlements_url = ENDPOINTS["grid3_settlement_extents_v4_1"]["layer_url"]
+    settlements_record = ENDPOINTS["grid3_settlement_extents_v3_1"]
     names_url = ENDPOINTS["grid3_settlement_names"]["layer_url"]
     health_url = ENDPOINTS["grid3_health_facilities_v2"]["layer_url"]
 
@@ -78,9 +79,30 @@ def main():
     lga_id = str(sagbama["properties"]["lgacode"])
     state_id = str(sagbama["properties"]["statecode"])
 
-    settlement_fc = query_feature_layer_geojson(settlements_url, geometry=bbox)
-    settlement_records = props(settlement_fc)
-    require_fields(settlement_records, ["block_id", "building_count", "extent_type"], "Settlement Extents v4.1")
+    # GRID3 v3.1 is distributed as an official HDX GeoPackage ZIP rather than
+    # the v4.x ArcGIS feature layer. Verify that the selected resource is reachable
+    # without downloading the full national archive during this lightweight smoke test.
+    download_url = settlements_record["download_url"]
+    with requests.get(
+        download_url,
+        stream=True,
+        allow_redirects=True,
+        timeout=60,
+        headers={"User-Agent": "nigeria-population-demography-course/1.0", "Range": "bytes=0-0"},
+    ) as response:
+        if response.status_code not in (200, 206):
+            raise ValueError(
+                f"GRID3 Settlement Extents v3.1 HDX resource returned HTTP {response.status_code}"
+            )
+        content_length = response.headers.get("Content-Length")
+        content_type = response.headers.get("Content-Type", "")
+        settlement_source_check = {
+            "status_code": response.status_code,
+            "content_length_header": content_length,
+            "content_type": content_type,
+            "doi": settlements_record["doi"],
+            "resource_page": settlements_record["resource_page"],
+        }
 
     names_fc = query_feature_layer_geojson(names_url, geometry=bbox)
     name_records = props(names_fc)
@@ -98,7 +120,6 @@ def main():
     for name, fc in [
         ("states.geojson", states),
         ("lgas.geojson", lgas),
-        ("sagbama_settlement_extents_bbox.geojson", settlement_fc),
         ("sagbama_settlement_names_bbox.geojson", names_fc),
         ("sagbama_health_facilities_bbox.geojson", health_fc),
     ]:
@@ -114,10 +135,11 @@ def main():
         "statecode": state_id,
         "lgacode": lga_id,
         "pilot_bbox_wgs84": bbox,
-        "settlement_extent_bbox_records": len(settlement_records),
+        "settlement_extent_source": "GRID3 NGA Settlement Extents v3.1",
+        "settlement_extent_resource_check": settlement_source_check,
         "settlement_name_bbox_records": len(name_records),
         "health_facility_bbox_records": len(health_records),
-        "note": "BBox records are a download smoke test; later pilot processing clips them to the exact LGA geometry."
+        "note": "Boundary/name/health bbox records are smoke tests. GRID3 v3.1 settlement extents are supplied as the official HDX GeoPackage ZIP and are clipped locally in the preparation workflow."
     }
     (out_dir / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
