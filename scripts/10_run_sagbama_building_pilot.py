@@ -105,7 +105,7 @@ def main():
 
     # Compare with GRID3 source-block counts only for full, uncut blocks as a diagnostic.
     full = settlements[
-        settlements["building_count_status"].astype(str).eq("source_full_block_count_provisional")
+        settlements["building_count_status"].astype(str).eq("source_full_extent_count_provisional")
     ].copy()
     source_full_count_sum = pd.to_numeric(
         full.get("source_building_count", pd.Series(dtype=float)),
@@ -145,10 +145,10 @@ def main():
             "boundary_rule": allocation_info["boundary_rule"],
         },
         "grid3_diagnostic": {
-            "full_uncut_components": int(len(full)),
-            "sum_of_GRID3_source_building_count_for_full_uncut_components": source_full_count_sum,
+            "full_uncut_v3_1_extents": int(len(full)),
+            "sum_of_GRID3_v3_1_source_building_count_for_full_uncut_extents": source_full_count_sum,
             "note": (
-                "This is only a source diagnostic. GRID3 whole-block counts are not copied "
+                "This is only a source diagnostic. GRID3 v3.1 whole-extent counts are not copied "
                 "to partial cross-LGA components and are not substituted for Open Buildings counts."
             ),
         },
