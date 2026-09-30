@@ -216,7 +216,7 @@ def main():
         exact_duplicates = int(dup.sum())
         df = df[~dup].copy()
 
-        geometry = gpd.GeoSeries.from_wkt(df["geometry"], on_invalid="coerce", crs=4326)
+        geometry = gpd.GeoSeries.from_wkt(df["geometry"], on_invalid="warn", crs=4326)
         invalid_wkt = int(geometry.isna().sum())
         if invalid_wkt:
             raise ValueError(f"{invalid_wkt} retained Open Buildings rows have invalid WKT geometry.")
