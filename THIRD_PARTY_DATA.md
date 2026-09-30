@@ -28,15 +28,16 @@ Current working choices:
   plans to use the CC BY 4.0 route unless another downstream dataset requires
   ODbL compatibility.
 - GRID3 Health Facilities v2.0: CC BY 4.0 according to its current metadata.
-- GRID3 Settlement Extents v4.0: exact ArcGIS metadata inspected on 2026-09-30
-  states **CC BY-SA 4.0** and requires derivative distribution to maintain the
-  same terms.
-- GRID3 Settlement Extents v4.1: the GRID3 Nigeria catalogue identifies v4.1
-  (August 2026) as the current release, but the exact v4.1-specific licence text
-  has not yet been captured from its metadata/release notes.
+- **GRID3 NGA - Settlement Extents v3.1**: selected settlement baseline for this
+  course. CIESIN/GRID3, 2024. DOI: https://doi.org/10.7916/x9xg-e262.
+  The official metadata states **CC BY-SA 4.0**. The dataset contains two
+  GeoPackages: settlement polygons and centroids of settled ~100 m grid cells.
+  Redistribution is permitted with attribution and share-alike terms.
+  Official HDX dataset page:
+  https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1
+  Official resource:
+  https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1/resource/0a22d6fc-7f1f-4f50-aead-09ef7be0455d
 
-Therefore **do not publicly redistribute v4.1 or v4.1-derived settlement
-geometry until the exact v4.1 terms are verified**.
-
-Do not copy a licence from an older release onto a newer release merely because
-the titles, publisher or methodology are similar.
+The root MIT licence does **not** apply to the GRID3 v3.1 data. Any mirrored or
+derived settlement geometry must retain the GRID3/CIESIN attribution and
+CC BY-SA 4.0 terms.
