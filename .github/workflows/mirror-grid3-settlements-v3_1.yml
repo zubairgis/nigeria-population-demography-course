@@ -1,0 +1,59 @@
+name: Mirror GRID3 NGA Settlement Extents v3.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/mirror-grid3-settlements-v3_1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    env:
+      ASSET: GRID3_NGA_settlement_extents_v3_1_gpkg.zip
+      TAG: data-grid3-settlements-v3.1
+      URL: https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1/resource/0a22d6fc-7f1f-4f50-aead-09ef7be0455d/download/GRID3_NGA_settlement_extents_v3_1_gpkg.zip
+    steps:
+      - name: Download official HDX resource
+        run: |
+          set -euo pipefail
+          curl -fL --retry 4 --retry-all-errors -A "nigeria-population-demography-course/1.0" "$URL" -o "$ASSET"
+          test -s "$ASSET"
+          unzip -t "$ASSET"
+          unzip -l "$ASSET" | tee archive_contents.txt
+          grep -q "GRID3_NGA_settlement_extents_v3_1.gpkg" archive_contents.txt
+          grep -q "GRID3_NGA_settlement_grid_v3_1.gpkg" archive_contents.txt
+          sha256sum "$ASSET" | tee SHA256SUMS.txt
+
+      - name: Write source and licence note
+        run: |
+          cat > SOURCE_GRID3_v3_1.txt <<'EOF'
+          GRID3 NGA - Settlement Extents v3.1
+          Publisher: Center for International Earth Science Information Network (CIESIN), Columbia University / GRID3
+          Year: 2024
+          DOI: https://doi.org/10.7916/x9xg-e262
+          HDX dataset: https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1
+          HDX resource: https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1/resource/0a22d6fc-7f1f-4f50-aead-09ef7be0455d
+          Licence: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+          This release mirrors the official HDX ZIP without altering the archive.
+          The repository MIT licence does not apply to this third-party dataset.
+          EOF
+
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          NOTES="Official mirror of GRID3 NGA - Settlement Extents v3.1 (CIESIN/GRID3, 2024). DOI: https://doi.org/10.7916/x9xg-e262. Licence: CC BY-SA 4.0. The ZIP is mirrored without modification from the HDX resource selected for this course."
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$ASSET" SHA256SUMS.txt SOURCE_GRID3_v3_1.txt --clobber --repo "$GITHUB_REPOSITORY"
+          else
+            gh release create "$TAG" "$ASSET" SHA256SUMS.txt SOURCE_GRID3_v3_1.txt \
+              --title "GRID3 NGA Settlement Extents v3.1" \
+              --notes "$NOTES" \
+              --repo "$GITHUB_REPOSITORY"
+          fi
