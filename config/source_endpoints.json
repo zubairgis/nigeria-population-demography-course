@@ -24,5 +24,17 @@
   "grid3_health_facilities_v2": {
     "layer_url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0",
     "item_id": "081506afb7f14af1a3f64130343a6a6a"
+  },
+  "osm_drainage_geofabrik": {
+    "dataset_page": "https://download.geofabrik.de/africa/nigeria.html",
+    "download_url": "https://download.geofabrik.de/africa/nigeria-latest.osm.pbf",
+    "classes": [
+      "river",
+      "stream",
+      "canal",
+      "drain"
+    ],
+    "source": "OpenStreetMap via Geofabrik Nigeria extract",
+    "licence": "ODbL 1.0"
   }
 }
