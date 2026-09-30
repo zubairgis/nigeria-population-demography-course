@@ -35,7 +35,7 @@ The seven-chapter student notebook is intentionally a placeholder until this val
 - Under-1 = age 0 to <1 year.
 - Under-5 = under-1 plus ages 1 to <5 years.
 - Under-1 is a subset of under-5 and is never added to under-5 as a separate population group.
-- Settlement extents are mapped settlement extents, not official community boundaries.
+- Settlement extents use **GRID3 NGA Settlement Extents v3.1** (CIESIN/GRID3, 2024; CC BY-SA 4.0) and are mapped settlement extents, not official community boundaries.
 - Building footprints are detections, not households or occupied dwellings.
 - Health-facility presence does not imply operational status or service availability.
 - Exact/fractional raster-polygon aggregation is preferred over `all_touched=True`.
@@ -73,4 +73,4 @@ python scripts/02_validate_boundaries.py --help
 
 ## GitHub storage policy
 
-Git history is for code, documentation, manifests, small lookup tables, compact boundaries and a small validated pilot. Raw national rasters and national building footprints remain source-hosted. Processed state teaching packages may later be attached to versioned GitHub Releases when each asset is comfortably below GitHub's release-asset limit and the dataset licence permits redistribution.
+Git history is for code, documentation, manifests, small lookup tables, compact boundaries and a small validated pilot. Raw national rasters and national building footprints remain source-hosted. The official GRID3 NGA Settlement Extents v3.1 GeoPackage ZIP is stored as a **versioned GitHub Release asset** (not in Git history) because its CC BY-SA 4.0 terms permit redistribution with attribution/share-alike. Processed state teaching packages may also be attached to versioned GitHub Releases when appropriate.
