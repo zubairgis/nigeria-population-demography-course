@@ -16,7 +16,7 @@ jobs:
     env:
       ASSET: GRID3_NGA_settlement_extents_v3_1_gpkg.zip
       TAG: data-grid3-settlements-v3.1
-      URL: https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1/resource/0a22d6fc-7f1f-4f50-aead-09ef7be0455d/download/GRID3_NGA_settlement_extents_v3_1_gpkg.zip
+      URL: https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1/resource/0a22d6fc-7f1f-4f50-aead-09ef7be0455d/download/
     steps:
       - name: Download official HDX resource
         run: |
