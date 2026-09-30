@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "github_actions_run_id": 36706846970,
+  "validation_date": "2026-09-30",
+  "state_fct_records": 37,
+  "lga_area_council_records": 774,
+  "fct_area_councils": 6,
+  "pilot_state": "Bayelsa",
+  "pilot_lga": "Sagbama",
+  "statecode": "BY",
+  "lgacode": "6006",
+  "pilot_bbox_wgs84": [
+    5.95986509329947,
+    4.81326293933324,
+    6.56963205327668,
+    5.38056612013037
+  ],
+  "settlement_extent_bbox_records": 6820,
+  "settlement_name_bbox_records": 836,
+  "health_facility_bbox_records": 300,
+  "interpretation": "These are bbox download smoke-test counts. Exact-LGA clipping and assignment occur later in the pilot workflow.",
+  "third_party_data_committed": false
+}
