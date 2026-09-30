@@ -5,7 +5,7 @@ import geopandas as gpd
 import pandas as pd
 
 ROOT=Path(__file__).resolve().parents[1]
-PBF_URL="https://download.geofabrik.de/africa/nigeria-latest.osm.pbf"
+PBF_URL="https://download.geofabrik.de/africa/nigeria-260901.osm.pbf"
 TMP=ROOT/"_drainage_cache_tmp"
 OUT=ROOT/"data/drainage/by_state"
 META=ROOT/"data/drainage"
@@ -75,7 +75,7 @@ def main():
 
     (META/"manifest.json").write_text(json.dumps({
         "dataset":"OpenStreetMap waterways for Nigeria",
-        "source":"Geofabrik Nigeria latest OSM extract",
+        "source":"Geofabrik Nigeria 2026-09-01 OSM extract",
         "source_url":PBF_URL,
         "classes":["river","stream","canal","drain"],
         "licence":"OpenStreetMap data © OpenStreetMap contributors, ODbL 1.0",
