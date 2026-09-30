@@ -8,6 +8,7 @@ NAME_FIELD = "set_name"
 NAME_ID_FIELD = "set_id"
 ALT_NAME_FIELD = "set_altnam"
 BLOCK_ID_FIELD = "block_id"
+SOURCE_BUILDING_FIELD = "building_count"
 
 def _join_unique(values):
     cleaned = sorted({str(x).strip() for x in values.dropna() if str(x).strip()})
@@ -34,6 +35,23 @@ def main():
         if field not in names.columns:
             raise ValueError(f"Expected GRID3 Settlement Names field '{field}' not found.")
 
+    if ext[BLOCK_ID_FIELD].astype(str).duplicated().any():
+        raise ValueError("Source settlement block_id values are not unique in the downloaded subset.")
+
+    # Record source area before clipping so whole-block building counts are not
+    # silently copied to a partial LGA component.
+    area_crs = lga.estimate_utm_crs()
+    if area_crs is None:
+        raise ValueError("Could not determine a projected CRS for area checks.")
+    ext["_source_area_m2_calc"] = ext.to_crs(area_crs).geometry.area.to_numpy()
+
+    if SOURCE_BUILDING_FIELD in ext.columns:
+        ext["source_building_count"] = pd.to_numeric(
+            ext[SOURCE_BUILDING_FIELD], errors="coerce"
+        )
+    else:
+        ext["source_building_count"] = pd.NA
+
     components = gpd.overlay(ext, lga[["geometry"]], how="intersection", keep_geom_type=True)
     components = components[~components.geometry.is_empty].copy()
     components["source_settlement_id"] = components[BLOCK_ID_FIELD].astype(str)
@@ -42,9 +60,48 @@ def main():
         components["source_settlement_id"] + "__" + components["lga_id"]
     )
 
+    # If overlay produced multiple fragments for the same source block/LGA,
+    # dissolve them before any population aggregation.
     if components["settlement_component_id"].duplicated().any():
-        agg = {c: "first" for c in components.columns if c not in {"geometry", "settlement_component_id"}}
-        components = components.dissolve(by="settlement_component_id", aggfunc=agg, as_index=False)
+        first_cols = [
+            c for c in components.columns
+            if c not in {"geometry", "settlement_component_id"}
+        ]
+        agg = {c: "first" for c in first_cols}
+        components = components.dissolve(
+            by="settlement_component_id", aggfunc=agg, as_index=False
+        )
+
+    comp_proj = components.to_crs(area_crs)
+    components["component_area_m2_calc"] = comp_proj.geometry.area.to_numpy()
+    components["component_fraction_of_source"] = (
+        components["component_area_m2_calc"] / components["_source_area_m2_calc"]
+    ).clip(lower=0, upper=1)
+
+    full_source = components["component_fraction_of_source"] >= 0.999999
+    components["detected_building_count"] = pd.NA
+    components.loc[full_source, "detected_building_count"] = (
+        components.loc[full_source, "source_building_count"]
+    )
+    components["building_count_status"] = "requires_footprint_allocation"
+    components.loc[full_source, "building_count_status"] = (
+        "source_full_block_count_provisional"
+    )
+
+    # Prevent settlement population reconciliation from silently double counting
+    # overlapping component polygons. Tiny floating-point slivers are tolerated.
+    proj = components.to_crs(area_crs)
+    summed_area = float(proj.geometry.area.sum())
+    union_geom = proj.geometry.union_all()
+    union_area = float(union_geom.area) if union_geom is not None else 0.0
+    overlap_area = max(0.0, summed_area - union_area)
+    overlap_fraction = overlap_area / summed_area if summed_area else 0.0
+    if overlap_fraction > 1e-6:
+        raise ValueError(
+            "Settlement components overlap enough to risk population double counting: "
+            f"overlap_fraction={overlap_fraction:.8f}. Resolve overlaps before aggregation."
+        )
+    components["component_overlap_check"] = f"PASS:{overlap_fraction:.10f}"
 
     joined = gpd.sjoin(
         names,
@@ -77,11 +134,20 @@ def main():
         lambda n: "unmatched" if n == 0 else ("single" if n == 1 else "multiple")
     )
 
+    components = components.drop(
+        columns=["_source_area_m2_calc", "component_area_m2_calc"],
+        errors="ignore"
+    )
+
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     components.to_file(out, driver="GPKG")
     print("Settlement components:", len(components))
+    print("Name matching:")
     print(components["name_match_status"].value_counts(dropna=False).to_string())
+    print("Building-count status:")
+    print(components["building_count_status"].value_counts(dropna=False).to_string())
+    print(f"Component overlap fraction: {overlap_fraction:.10f}")
     print("Saved:", out)
 
 if __name__ == "__main__":
