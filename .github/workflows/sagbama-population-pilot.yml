@@ -5,12 +5,18 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/sagbama-population-pilot.yml"
+      - "config/source_endpoints.json"
+      - "scripts/01_download_sources.py"
+      - "scripts/03_prepare_population.py"
+      - "scripts/04_prepare_settlements.py"
+      - "scripts/06_prepare_health_facilities.py"
+      - "scripts/09_run_sagbama_population_pilot.py"
   workflow_dispatch:
 
 jobs:
   full-pilot:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 75
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
