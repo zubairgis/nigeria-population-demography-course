@@ -22,5 +22,19 @@ The original national file exceeded the connected upload transport body limit. I
 ## Name QA
 Raw source names are deliberately preserved. Some source strings need separate UI normalization, including examples `Akwa lbom`, `Nassarawa`, `Yenegoa`, and `Aiyekire\r\n`. Do not silently overwrite raw fields.
 
-## Provenance/licence
-The GeoJSON itself does not embed a licence statement or complete provider metadata. Record the exact official landing page, release/update metadata and redistribution terms in the dataset manifest before publishing redistributed course data or derivatives.
+## Provenance and terms
+Official source: **United Nations Second Administrative Level Boundaries (SALB), Nigeria**  
+Official page: https://salb.un.org/en/data/nga  
+National contributor: **Office of the Surveyor General of the Federation, Federal Surveys of Nigeria**  
+Dataset status: **Validated**  
+Temporal validity: **2000-01-01 to Last update (2024-08-08)**
+
+SALB Terms of Use apply. The data are for non-commercial use; source attribution
+is required, including the phrase **“from SALB Data, United Nations”** and the
+respective contributor. Source geometry/content must not be changed without
+contributor consent. Derived products may aggregate SALB data and add attributes
+when attribution is maintained.
+
+The repository partitions do not simplify, repair or alter the source features.
+UI/display-name normalization must be stored separately from the raw SALB
+attributes.

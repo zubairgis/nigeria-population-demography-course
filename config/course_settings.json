@@ -15,5 +15,13 @@
     "method": "fractional pixel overlap",
     "assumption": "population is uniformly distributed within each raster cell for partial-cell allocation",
     "all_touched": false
-  }
+  },
+  "admin_boundary_dataset_id": "un_salb_nga_admin_2024_08_08",
+  "admin_boundary_last_update": "2024-08-08",
+  "admin_boundary_source": "UN SALB / Office of the Surveyor General of the Federation, Federal Surveys of Nigeria",
+  "admin_id_fields": {
+    "state": "adm1cd",
+    "lga": "adm2cd"
+  },
+  "admin_repository_partitioning": "one unchanged ADM2 GeoJSON per State/FCT"
 }

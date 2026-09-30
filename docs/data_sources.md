@@ -3,10 +3,28 @@
 ## Recommended baseline
 
 ### Administrative boundaries
-Use GRID3 Operational State and LGA Boundaries as the initial linked-dropdown source.
-The LGA schema contains source codes (`statecode`, `lgacode`) in published copies,
-which is preferable to matching by name alone. FCT is handled as first-level
-selection and its Area Councils are represented at the LGA-equivalent level.
+Use **UN SALB Nigeria administrative units** as the primary State/FCT and LGA/Area
+Council source. The official Nigeria SALB page identifies the dataset as
+**Validated**, contributed by the **Office of the Surveyor General of the
+Federation, Federal Surveys of Nigeria**, with temporal validity from
+2000-01-01 to the current last update **2024-08-08**.
+
+The validated course copy contains 37 ADM1 units and 774 ADM2 units in EPSG:4326.
+Use stable SALB identifiers `adm1cd` and `adm2cd`, not names alone. FCT is
+`NGA015` and contains six Area Councils.
+
+The source national GeoJSON is archived in the repository as 37 unchanged
+State/FCT partitions under
+`data/boundaries/source/BNDA_NGA_2000-01-01_lastupdate/by_state/`. This avoids
+geometry simplification and also lets the student notebook download only the
+selected State/FCT.
+
+GRID3 Operational State/LGA boundaries remain useful as an older comparison/
+cross-check, but are no longer the primary administrative source.
+
+SALB Terms of Use apply: non-commercial use, required attribution, and
+restrictions on changing source geometry/content. Derived products may aggregate
+SALB data and add attributes when the required SALB/Contributor credit is kept.
 
 ### Population and demographics
 Use one WorldPop family:

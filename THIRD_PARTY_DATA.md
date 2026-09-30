@@ -8,6 +8,18 @@ GitHub Release, check the exact licence/version recorded in
 
 Current working choices:
 
+- **UN SALB Nigeria Administrative Units (current through 2024-08-08)**:
+  copyright is vested in the United Nations under the SALB Terms of Use. The
+  Nigeria contributor is the Office of the Surveyor General of the Federation,
+  Federal Surveys of Nigeria. SALB Data may be used for **non-commercial
+  purposes**; required source credit must include **“from SALB Data, United
+  Nations”** and the contributor. Users are prohibited from changing source
+  geometry/content without contributor consent. SALB-derived products may add
+  attributes and aggregate original SALB data when the required credit is kept.
+  The repository stores the 774 source ADM2 features as 37 unchanged State/FCT
+  partitions; the root MIT licence does not apply to these data files.
+
+
 - GRID3 Operational State Boundaries: CC BY 4.0 according to source metadata.
 - GRID3 Operational LGA Boundaries: CC BY 4.0 according to source metadata.
 - GRID3 Settlement Names: CC BY 4.0 according to source metadata.
