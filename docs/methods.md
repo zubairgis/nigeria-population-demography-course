@@ -22,7 +22,9 @@ LGA-specific component. Preserve the original source ID and construct a
 component ID. Population is aggregated to the component geometry, not copied
 wholesale into every intersecting LGA.
 
-Check for overlapping component geometries before raster aggregation.
+Check for overlapping component geometries before raster aggregation. The
+preparation script stops if overlap is large enough to create meaningful
+population double counting.
 
 ## Settlement names
 Prefer a shared source ID if one is documented. Otherwise:
@@ -33,21 +35,51 @@ Prefer a shared source ID if one is documented. Otherwise:
 5. never force every polygon to the nearest name.
 
 ## Buildings
-A count is a count of detected footprints. It is not a household count,
-dwelling count or occupancy estimate.
+A building result is a count of **detected building footprints**. It is not a
+household count, occupied-dwelling count, residential-building count or
+population estimate.
 
-When Google Open Buildings is used, record the confidence filtering policy and
-tile-specific threshold if applicable. Assign buildings by centroid (or another
-documented deterministic rule) so each footprint is allocated once.
+For the validated building path, use Google Open Buildings V3 polygons and
+Google's documented regional-download pattern:
+- identify the level-6 S2 shards covering the selected LGA;
+- filter detections using Google's level-4 tile score threshold for a requested
+  precision target (90% precision for the pilot);
+- retain only detections whose documented source centroid is strictly inside
+  the selected LGA;
+- remove only exact duplicate detections;
+- assign each retained detection to at most one non-overlapping settlement
+  component using its source centroid;
+- report detections inside the LGA but outside mapped settlement components.
+
+A footprint whose centroid falls exactly on a settlement-component boundary is
+left unallocated rather than assigned to both sides.
+
+GRID3 Settlement Extents v4.1 also contains a source `building_count` field.
+That whole-source-block count may be retained as a diagnostic for a component
+that is effectively the full source block. It must **not** be copied to a
+partial cross-LGA component. Partial components require actual footprint
+allocation.
+
+Record the Open Buildings confidence policy, tile identifiers, source download
+bytes, duplicates removed and allocation reconciliation.
 
 ## Health facilities
-Deduplicate first by stable identifiers (`nhfr_uid`, `nhfr_facility_code`,
-`globalid` as appropriate), then inspect coordinates and administrative
-assignment. Do not infer operational status or services.
+Construct a deterministic facility identifier using the strongest available
+documented ID (`nhfr_uid`, then `nhfr_facility_code`, then `globalid`).
+Do not collapse unrelated rows merely because an identifier is null. Where
+`last_updated` exists, keep the newest record for duplicate stable IDs.
+
+Check coordinate plausibility, use strict point-in-polygon assignment to the
+selected LGA, and report points exactly on the LGA boundary separately. Do not
+infer operational status, staffing or services.
 
 ## Reconciliation
 Report:
 - LGA modelled population;
 - population inside mapped settlement components;
 - population outside mapped settlement components;
-- difference and percentage coverage.
+- difference and percentage coverage;
+- detected buildings allocated to settlement components;
+- detected buildings inside the LGA but outside mapped settlement components.
+
+No reconciliation total is forced to match by altering source values.
