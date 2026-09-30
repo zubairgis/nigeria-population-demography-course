@@ -1,0 +1,268 @@
+{
+  "dataset": "GRID3 NGA Settlement Names",
+  "source_layer": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/Settlements_in_Nigeria/FeatureServer/0",
+  "licence": "CC BY 4.0",
+  "storage_mode": "by_state",
+  "feature_count": 292438,
+  "files": [
+    {
+      "statename": "Abia",
+      "file": "by_state/Abia.geojson",
+      "feature_count": 2675,
+      "size_bytes": 1313773,
+      "sha256": "a488b55fb5755dd3546d7dfab6b8353e0d767009623af9086b7d4658df474dd7"
+    },
+    {
+      "statename": "Adamawa",
+      "file": "by_state/Adamawa.geojson",
+      "feature_count": 12722,
+      "size_bytes": 6221428,
+      "sha256": "91132c502739ae1b3e3a049d392e11123b15479c3fe745c2a10d5121549568fb"
+    },
+    {
+      "statename": "Akwa Ibom",
+      "file": "by_state/Akwa_Ibom.geojson",
+      "feature_count": 1939,
+      "size_bytes": 969807,
+      "sha256": "4d7773c46993b2be4503d01b3d29be3ba109a17cf60a7a602fa3228c065f4daf"
+    },
+    {
+      "statename": "Anambra",
+      "file": "by_state/Anambra.geojson",
+      "feature_count": 2717,
+      "size_bytes": 1350627,
+      "sha256": "95f93ef0710542a3921f5dd79d0c0a3c3c198d7ca8be2cec30b5abdc4e06c9d7"
+    },
+    {
+      "statename": "Bauchi",
+      "file": "by_state/Bauchi.geojson",
+      "feature_count": 25102,
+      "size_bytes": 12321565,
+      "sha256": "15310110779e177e7fa264c5340fcd573f6e92dc39b102e4c286ccf34d82a604"
+    },
+    {
+      "statename": "Bayelsa",
+      "file": "by_state/Bayelsa.geojson",
+      "feature_count": 1916,
+      "size_bytes": 941161,
+      "sha256": "9785b20f73842f3c0a41883886cba8b01b8022090fda89932b40978b50a13b56"
+    },
+    {
+      "statename": "Benue",
+      "file": "by_state/Benue.geojson",
+      "feature_count": 7475,
+      "size_bytes": 3629989,
+      "sha256": "fc95fe668df929a1dbf1ec4736e106bf836cf829a9d8796233ebe721f073a6dc"
+    },
+    {
+      "statename": "Borno",
+      "file": "by_state/Borno.geojson",
+      "feature_count": 22069,
+      "size_bytes": 10939389,
+      "sha256": "797b514ad24d95e94e118816b95668cc494f5457f9dcc27a43b96941580718f1"
+    },
+    {
+      "statename": "Cross River",
+      "file": "by_state/Cross_River.geojson",
+      "feature_count": 7462,
+      "size_bytes": 3673031,
+      "sha256": "46d9042ebb56fd68fa2abbead96639a30f88f4e77017f36198f8d92486162192"
+    },
+    {
+      "statename": "Delta",
+      "file": "by_state/Delta.geojson",
+      "feature_count": 1986,
+      "size_bytes": 980370,
+      "sha256": "9f4427835c269e7be7accfa90d9b367ffc5eb47c32b98e0e6ce17bb03561ecb2"
+    },
+    {
+      "statename": "Ebonyi",
+      "file": "by_state/Ebonyi.geojson",
+      "feature_count": 7721,
+      "size_bytes": 3855137,
+      "sha256": "5690578774775f45415fa2642a04cc73d5e616f5b010774988d0461e0a21e0da"
+    },
+    {
+      "statename": "Edo",
+      "file": "by_state/Edo.geojson",
+      "feature_count": 2063,
+      "size_bytes": 1012225,
+      "sha256": "b01ea3b67ef003e02f98371e3a4dda56b5f2f5d8dac7f1613fc51a1f20c86ae9"
+    },
+    {
+      "statename": "Ekiti",
+      "file": "by_state/Ekiti.geojson",
+      "feature_count": 2188,
+      "size_bytes": 1077790,
+      "sha256": "238a6e6ccb5651259671cd86c183be12e0b976bc4078eaf6bbbd6f184b621f78"
+    },
+    {
+      "statename": "Enugu",
+      "file": "by_state/Enugu.geojson",
+      "feature_count": 1500,
+      "size_bytes": 741584,
+      "sha256": "466db6612c7b7988f9323814203c67dbd0cd09c36cf25b4d91ab10655e4e3845"
+    },
+    {
+      "statename": "Fct",
+      "file": "by_state/Fct.geojson",
+      "feature_count": 1161,
+      "size_bytes": 571308,
+      "sha256": "541152df143bb0d44dfef65a529932a5a498665462b7bf6493000073c55bff5a"
+    },
+    {
+      "statename": "Gombe",
+      "file": "by_state/Gombe.geojson",
+      "feature_count": 3389,
+      "size_bytes": 1663841,
+      "sha256": "4871ac36d055d59f851bc1ad69a302c8088d5705c303ccf68e4616bdc6fed14a"
+    },
+    {
+      "statename": "Imo",
+      "file": "by_state/Imo.geojson",
+      "feature_count": 3751,
+      "size_bytes": 1861960,
+      "sha256": "ac899def29f65215785d6dac974f78c5631ccf0230ac2ff18f84044ef3bca3db"
+    },
+    {
+      "statename": "Jigawa",
+      "file": "by_state/Jigawa.geojson",
+      "feature_count": 12446,
+      "size_bytes": 6074924,
+      "sha256": "40218b17b5ddd67e59b62acff928aada5a10e76484b9cce5ae5482532ccdd38f"
+    },
+    {
+      "statename": "Kaduna",
+      "file": "by_state/Kaduna.geojson",
+      "feature_count": 26833,
+      "size_bytes": 13190953,
+      "sha256": "71178fe05f35cd28ae0fd00253b9bf1548db9abd78873297840e1af4dfabba9b"
+    },
+    {
+      "statename": "Kano",
+      "file": "by_state/Kano.geojson",
+      "feature_count": 24983,
+      "size_bytes": 12149809,
+      "sha256": "70fdfefdc9aafb0601ee61abe310f7ffd967134ba3c2ec607d72d5327f7afe92"
+    },
+    {
+      "statename": "Katsina",
+      "file": "by_state/Katsina.geojson",
+      "feature_count": 17170,
+      "size_bytes": 8392179,
+      "sha256": "7a23e4a814f295dda39510e3e1f3235bdf12a99d8cb913c34f54d05163fc0de3"
+    },
+    {
+      "statename": "Kebbi",
+      "file": "by_state/Kebbi.geojson",
+      "feature_count": 14086,
+      "size_bytes": 6894282,
+      "sha256": "0f77a77a6514eb6cf8343fcbec03bb7ac274c6e5f2cf0fa20fbc6ae5ab7110c4"
+    },
+    {
+      "statename": "Kogi",
+      "file": "by_state/Kogi.geojson",
+      "feature_count": 3460,
+      "size_bytes": 1699469,
+      "sha256": "13a13f5d8dc1895559877671f951a9e255a62e59f11f287e700397f583bf89f1"
+    },
+    {
+      "statename": "Kwara",
+      "file": "by_state/Kwara.geojson",
+      "feature_count": 5226,
+      "size_bytes": 2549656,
+      "sha256": "a749b9f2d95bd3266135a6a932bf0c1f78d5b6b8c99fe325aa15d52c3118101b"
+    },
+    {
+      "statename": "Lagos",
+      "file": "by_state/Lagos.geojson",
+      "feature_count": 1795,
+      "size_bytes": 885025,
+      "sha256": "9ba053b19de4859bfac86ccd14667e570ea0c14f8aa322a63077779bba4587e1"
+    },
+    {
+      "statename": "Nasarawa",
+      "file": "by_state/Nasarawa.geojson",
+      "feature_count": 2863,
+      "size_bytes": 1400584,
+      "sha256": "47ae0a477ab36b385719949cdf6b6b1f9a25e0d95858bd96e955fbc70aceadc0"
+    },
+    {
+      "statename": "Niger",
+      "file": "by_state/Niger.geojson",
+      "feature_count": 8939,
+      "size_bytes": 4378527,
+      "sha256": "13f486cebea49f24f17d16242bf8bd9d4a6c7a9aa0889790d523aa75ae9fbf59"
+    },
+    {
+      "statename": "Ogun",
+      "file": "by_state/Ogun.geojson",
+      "feature_count": 7244,
+      "size_bytes": 3546389,
+      "sha256": "83cb6ec0ff98810f7c181e780b3d81735acd1d5203074984e84fbb36906edd31"
+    },
+    {
+      "statename": "Ondo",
+      "file": "by_state/Ondo.geojson",
+      "feature_count": 2987,
+      "size_bytes": 1474240,
+      "sha256": "b0406c6df78b9c0b73c93faf484990fd7b76cef72e85a1329c7d316148bd4426"
+    },
+    {
+      "statename": "Osun",
+      "file": "by_state/Osun.geojson",
+      "feature_count": 5310,
+      "size_bytes": 2609141,
+      "sha256": "27f5f8e4feb4d7738e48f4dd2facc7d9edb0df9d2e8136fbb685f1e532ff05a3"
+    },
+    {
+      "statename": "Oyo",
+      "file": "by_state/Oyo.geojson",
+      "feature_count": 11557,
+      "size_bytes": 5651045,
+      "sha256": "327d39f3426d0d4829bfb9324a62539f40a4d240284b79ac70133d6871db2b3f"
+    },
+    {
+      "statename": "Plateau",
+      "file": "by_state/Plateau.geojson",
+      "feature_count": 5383,
+      "size_bytes": 2637383,
+      "sha256": "7f06bf97e264dc94a1ef31e28bf0d9a39b49e48a5d880215dae285e07d8ed6c1"
+    },
+    {
+      "statename": "Rivers",
+      "file": "by_state/Rivers.geojson",
+      "feature_count": 1149,
+      "size_bytes": 568013,
+      "sha256": "6c66c0811c7e1e18c4a6b821707e33128656a2dba2a9cdfb706be875f2e6e5df"
+    },
+    {
+      "statename": "Sokoto",
+      "file": "by_state/Sokoto.geojson",
+      "feature_count": 9722,
+      "size_bytes": 4748143,
+      "sha256": "f1b1ffd8f72b8941940d50c2e054fd200f79a61d4f6288704f943c5e089ebfb0"
+    },
+    {
+      "statename": "Taraba",
+      "file": "by_state/Taraba.geojson",
+      "feature_count": 3380,
+      "size_bytes": 1652169,
+      "sha256": "ad38773d459cb6a7765bb9a8f9380230d8fea9764b177c9d65ec6b0d42afb61c"
+    },
+    {
+      "statename": "Yobe",
+      "file": "by_state/Yobe.geojson",
+      "feature_count": 9814,
+      "size_bytes": 4762820,
+      "sha256": "fb1bf0aad686406fb2608f55335dc626b8eaea90ecb4cb3c6278cb3cc3e06bf7"
+    },
+    {
+      "statename": "Zamfara",
+      "file": "by_state/Zamfara.geojson",
+      "feature_count": 10255,
+      "size_bytes": 5012463,
+      "sha256": "374ac389c26ada82e8120715c6ebb9ba3974aee922dd279cde975a105ce39c77"
+    }
+  ]
+}
