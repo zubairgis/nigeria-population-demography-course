@@ -1,5 +1,6 @@
 from __future__ import annotations
 import argparse
+import hashlib
 from pathlib import Path
 import geopandas as gpd
 import pandas as pd
@@ -7,12 +8,18 @@ import pandas as pd
 NAME_FIELD = "set_name"
 NAME_ID_FIELD = "set_id"
 ALT_NAME_FIELD = "set_altnam"
-BLOCK_ID_FIELD = "block_id"
 SOURCE_BUILDING_FIELD = "building_count"
 
 def _join_unique(values):
     cleaned = sorted({str(x).strip() for x in values.dropna() if str(x).strip()})
     return " | ".join(cleaned) if cleaned else None
+
+def _stable_geometry_id(geom) -> str:
+    if geom is None or geom.is_empty:
+        raise ValueError("Settlement source contains an empty geometry.")
+    # Deterministic identifier for the same v3.1 geometry. v3.1 does not publish
+    # the v4.x block_id field.
+    return "v31_" + hashlib.sha1(geom.wkb).hexdigest()[:20]
 
 def main():
     p = argparse.ArgumentParser()
@@ -29,39 +36,43 @@ def main():
     if len(lga) != 1:
         raise ValueError("--lga must contain exactly one selected LGA polygon.")
 
-    if BLOCK_ID_FIELD not in ext.columns:
-        raise ValueError("Expected GRID3 v4.1 field 'block_id' not found. Stop and inspect schema.")
+    required_v31 = {"country", "iso3", "building_count", "building_area", "type",
+                    "probability", "date", "source", "mgrs_code"}
+    missing = sorted(required_v31 - set(ext.columns))
+    if missing:
+        raise ValueError(
+            "Expected GRID3 NGA Settlement Extents v3.1 schema not found. "
+            f"Missing fields: {missing}. Stop and inspect the source version."
+        )
     for field in [NAME_ID_FIELD, NAME_FIELD]:
         if field not in names.columns:
             raise ValueError(f"Expected GRID3 Settlement Names field '{field}' not found.")
 
-    if ext[BLOCK_ID_FIELD].astype(str).duplicated().any():
-        raise ValueError("Source settlement block_id values are not unique in the downloaded subset.")
+    ext = ext.copy()
+    ext["source_settlement_id"] = ext.geometry.map(_stable_geometry_id)
+    if ext["source_settlement_id"].duplicated().any():
+        # Identical geometries can occur; add source-row ordinal only for duplicates.
+        dup = ext["source_settlement_id"].duplicated(keep=False)
+        ext.loc[dup, "source_settlement_id"] = [
+            f"{sid}_{i}" for i, sid in
+            enumerate(ext.loc[dup, "source_settlement_id"].tolist(), start=1)
+        ]
 
-    # Record source area before clipping so whole-block building counts are not
-    # silently copied to a partial LGA component.
     area_crs = lga.estimate_utm_crs()
     if area_crs is None:
         raise ValueError("Could not determine a projected CRS for area checks.")
     ext["_source_area_m2_calc"] = ext.to_crs(area_crs).geometry.area.to_numpy()
-
-    if SOURCE_BUILDING_FIELD in ext.columns:
-        ext["source_building_count"] = pd.to_numeric(
-            ext[SOURCE_BUILDING_FIELD], errors="coerce"
-        )
-    else:
-        ext["source_building_count"] = pd.NA
+    ext["source_building_count"] = pd.to_numeric(
+        ext[SOURCE_BUILDING_FIELD], errors="coerce"
+    )
 
     components = gpd.overlay(ext, lga[["geometry"]], how="intersection", keep_geom_type=True)
     components = components[~components.geometry.is_empty].copy()
-    components["source_settlement_id"] = components[BLOCK_ID_FIELD].astype(str)
     components["lga_id"] = str(args.lga_id)
     components["settlement_component_id"] = (
         components["source_settlement_id"] + "__" + components["lga_id"]
     )
 
-    # If overlay produced multiple fragments for the same source block/LGA,
-    # dissolve them before any population aggregation.
     if components["settlement_component_id"].duplicated().any():
         first_cols = [
             c for c in components.columns
@@ -85,11 +96,9 @@ def main():
     )
     components["building_count_status"] = "requires_footprint_allocation"
     components.loc[full_source, "building_count_status"] = (
-        "source_full_block_count_provisional"
+        "source_full_extent_count_provisional"
     )
 
-    # Prevent settlement population reconciliation from silently double counting
-    # overlapping component polygons. Tiny floating-point slivers are tolerated.
     proj = components.to_crs(area_crs)
     summed_area = float(proj.geometry.area.sum())
     union_geom = proj.geometry.union_all()
@@ -143,6 +152,7 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     components.to_file(out, driver="GPKG")
     print("Settlement components:", len(components))
+    print("GRID3 source version: v3.1")
     print("Name matching:")
     print(components["name_match_status"].value_counts(dropna=False).to_string())
     print("Building-count status:")
