@@ -26,7 +26,6 @@ jobs:
           unzip -t "$ASSET"
           unzip -l "$ASSET" | tee archive_contents.txt
           grep -q "GRID3_NGA_settlement_extents_v3_1.gpkg" archive_contents.txt
-          grep -q "GRID3_NGA_settlement_grid_v3_1.gpkg" archive_contents.txt
           sha256sum "$ASSET" | tee SHA256SUMS.txt
 
       - name: Write source and licence note
@@ -39,7 +38,7 @@ jobs:
           HDX dataset: https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1
           HDX resource: https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1/resource/0a22d6fc-7f1f-4f50-aead-09ef7be0455d
           Licence: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-          This release mirrors the official HDX ZIP without altering the archive.
+          This release mirrors the selected official HDX settlement-extents ZIP without altering the archive.
           The repository MIT licence does not apply to this third-party dataset.
           EOF
 
