@@ -1,0 +1,41 @@
+name: Sagbama vector smoke test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "config/source_endpoints.json"
+      - ".github/workflows/sagbama-vector-smoke.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "config/source_endpoints.json"
+  workflow_dispatch:
+
+jobs:
+  sagbama-vector-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install lightweight dependency
+        run: python -m pip install --upgrade requests
+
+      - name: Run actual vector download smoke test
+        run: python scripts/08_smoke_test_sagbama_vectors.py
+
+      - name: Upload transient smoke-test outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: sagbama-vector-smoke
+          path: checks/smoke_output/
+          if-no-files-found: error
+          retention-days: 7
