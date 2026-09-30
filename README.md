@@ -8,7 +8,7 @@ A student will select a Nigerian State/FCT and then an LGA/Area Council using st
 
 ## Current stage
 
-**Stage 1 — data foundation and pilot validation.** Do not treat this repository as nationally ready yet.
+**Stage 2 — validated pilot plus student notebook development.** The Bayelsa/Sagbama validation gate has passed and the seven-chapter student notebook is now available. National teaching packages are still being optimized.
 
 1. Verify source metadata, schemas, licences and access methods.
 2. Build and validate a Bayelsa/Sagbama pilot.
@@ -26,7 +26,11 @@ https://colab.research.google.com/github/zubairgis/nigeria-population-demography
 
 The notebook is intended for the instructor/data-preparation stage. It downloads only documented sources, builds the Bayelsa → Sagbama pilot, applies fractional-overlap WorldPop aggregation, checks settlement-name matching and health facilities, performs settlement/LGA reconciliation, and creates a pilot ZIP.
 
-The seven-chapter student notebook is intentionally a placeholder until this validation gate passes.
+Open the seven-chapter student notebook directly in Google Colab:
+
+https://colab.research.google.com/github/zubairgis/nigeria-population-demography-course/blob/main/notebooks/01_Population_Demography_7_Chapters.ipynb
+
+It uses the validated SALB State/LGA lookup, GRID3 Settlement Extents v3.1, WorldPop 2025 R2025A, Google Open Buildings V3, and GRID3/NHFR health-facility workflow.
 
 ## Scientific rules
 
