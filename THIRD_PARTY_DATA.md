@@ -30,8 +30,9 @@ Current working choices:
 - GRID3 Health Facilities v2.0: CC BY 4.0 according to its current metadata.
 - **GRID3 NGA - Settlement Extents v3.1**: selected settlement baseline for this
   course. CIESIN/GRID3, 2024. DOI: https://doi.org/10.7916/x9xg-e262.
-  The official metadata states **CC BY-SA 4.0**. The dataset contains two
-  GeoPackages: settlement polygons and centroids of settled ~100 m grid cells.
+  The official metadata states **CC BY-SA 4.0**. The v3.1 product family includes settlement polygons and a settled-grid product. The
+  selected HDX resource `GRID3_NGA_settlement_extents_v3_1_gpkg.zip` contains the
+  settlement-extents GeoPackage, XML metadata and the data-release-notes PDF.
   Redistribution is permitted with attribution and share-alike terms.
   Official HDX dataset page:
   https://data.humdata.org/dataset/grid3-nga-settlement-extents-v3_1
