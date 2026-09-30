@@ -1,0 +1,236 @@
+{
+  "dataset": "OpenStreetMap waterways for Nigeria",
+  "source": "Geofabrik Nigeria 2026-09-01 OSM extract",
+  "source_url": "https://download.geofabrik.de/africa/nigeria-260901.osm.pbf",
+  "classes": [
+    "river",
+    "stream",
+    "canal",
+    "drain"
+  ],
+  "licence": "OpenStreetMap data \u00a9 OpenStreetMap contributors, ODbL 1.0",
+  "states": [
+    {
+      "adm1cd": "NGA001",
+      "adm1nm": "Abia",
+      "file": "by_state/NGA001_Abia_drainage.geojson",
+      "feature_count": 21
+    },
+    {
+      "adm1cd": "NGA002",
+      "adm1nm": "Adamawa",
+      "file": "by_state/NGA002_Adamawa_drainage.geojson",
+      "feature_count": 1477
+    },
+    {
+      "adm1cd": "NGA003",
+      "adm1nm": "Akwa lbom",
+      "file": "by_state/NGA003_Akwa_lbom_drainage.geojson",
+      "feature_count": 122
+    },
+    {
+      "adm1cd": "NGA004",
+      "adm1nm": "Anambra",
+      "file": "by_state/NGA004_Anambra_drainage.geojson",
+      "feature_count": 463
+    },
+    {
+      "adm1cd": "NGA005",
+      "adm1nm": "Bauchi",
+      "file": "by_state/NGA005_Bauchi_drainage.geojson",
+      "feature_count": 490
+    },
+    {
+      "adm1cd": "NGA006",
+      "adm1nm": "Bayelsa",
+      "file": "by_state/NGA006_Bayelsa_drainage.geojson",
+      "feature_count": 1371
+    },
+    {
+      "adm1cd": "NGA007",
+      "adm1nm": "Benue",
+      "file": "by_state/NGA007_Benue_drainage.geojson",
+      "feature_count": 1722
+    },
+    {
+      "adm1cd": "NGA008",
+      "adm1nm": "Borno",
+      "file": "by_state/NGA008_Borno_drainage.geojson",
+      "feature_count": 1997
+    },
+    {
+      "adm1cd": "NGA009",
+      "adm1nm": "Cross River",
+      "file": "by_state/NGA009_Cross_River_drainage.geojson",
+      "feature_count": 285
+    },
+    {
+      "adm1cd": "NGA010",
+      "adm1nm": "Delta",
+      "file": "by_state/NGA010_Delta_drainage.geojson",
+      "feature_count": 1784
+    },
+    {
+      "adm1cd": "NGA011",
+      "adm1nm": "Ebonyi",
+      "file": "by_state/NGA011_Ebonyi_drainage.geojson",
+      "feature_count": 91
+    },
+    {
+      "adm1cd": "NGA012",
+      "adm1nm": "Edo",
+      "file": "by_state/NGA012_Edo_drainage.geojson",
+      "feature_count": 259
+    },
+    {
+      "adm1cd": "NGA013",
+      "adm1nm": "Ekiti",
+      "file": "by_state/NGA013_Ekiti_drainage.geojson",
+      "feature_count": 12
+    },
+    {
+      "adm1cd": "NGA014",
+      "adm1nm": "Enugu",
+      "file": "by_state/NGA014_Enugu_drainage.geojson",
+      "feature_count": 86
+    },
+    {
+      "adm1cd": "NGA015",
+      "adm1nm": "Federal Capital Territory",
+      "file": "by_state/NGA015_Federal_Capital_Territory_drainage.geojson",
+      "feature_count": 577
+    },
+    {
+      "adm1cd": "NGA016",
+      "adm1nm": "Gombe",
+      "file": "by_state/NGA016_Gombe_drainage.geojson",
+      "feature_count": 446
+    },
+    {
+      "adm1cd": "NGA017",
+      "adm1nm": "Imo",
+      "file": "by_state/NGA017_Imo_drainage.geojson",
+      "feature_count": 91
+    },
+    {
+      "adm1cd": "NGA018",
+      "adm1nm": "Jigawa",
+      "file": "by_state/NGA018_Jigawa_drainage.geojson",
+      "feature_count": 86
+    },
+    {
+      "adm1cd": "NGA019",
+      "adm1nm": "Kaduna",
+      "file": "by_state/NGA019_Kaduna_drainage.geojson",
+      "feature_count": 1034
+    },
+    {
+      "adm1cd": "NGA020",
+      "adm1nm": "Kano",
+      "file": "by_state/NGA020_Kano_drainage.geojson",
+      "feature_count": 342
+    },
+    {
+      "adm1cd": "NGA021",
+      "adm1nm": "Katsina",
+      "file": "by_state/NGA021_Katsina_drainage.geojson",
+      "feature_count": 386
+    },
+    {
+      "adm1cd": "NGA022",
+      "adm1nm": "Kebbi",
+      "file": "by_state/NGA022_Kebbi_drainage.geojson",
+      "feature_count": 1002
+    },
+    {
+      "adm1cd": "NGA023",
+      "adm1nm": "Kogi",
+      "file": "by_state/NGA023_Kogi_drainage.geojson",
+      "feature_count": 1462
+    },
+    {
+      "adm1cd": "NGA024",
+      "adm1nm": "Kwara",
+      "file": "by_state/NGA024_Kwara_drainage.geojson",
+      "feature_count": 448
+    },
+    {
+      "adm1cd": "NGA025",
+      "adm1nm": "Lagos",
+      "file": "by_state/NGA025_Lagos_drainage.geojson",
+      "feature_count": 1034
+    },
+    {
+      "adm1cd": "NGA026",
+      "adm1nm": "Nassarawa",
+      "file": "by_state/NGA026_Nassarawa_drainage.geojson",
+      "feature_count": 325
+    },
+    {
+      "adm1cd": "NGA027",
+      "adm1nm": "Niger",
+      "file": "by_state/NGA027_Niger_drainage.geojson",
+      "feature_count": 6478
+    },
+    {
+      "adm1cd": "NGA028",
+      "adm1nm": "Ogun",
+      "file": "by_state/NGA028_Ogun_drainage.geojson",
+      "feature_count": 922
+    },
+    {
+      "adm1cd": "NGA029",
+      "adm1nm": "Ondo",
+      "file": "by_state/NGA029_Ondo_drainage.geojson",
+      "feature_count": 251
+    },
+    {
+      "adm1cd": "NGA030",
+      "adm1nm": "Osun",
+      "file": "by_state/NGA030_Osun_drainage.geojson",
+      "feature_count": 359
+    },
+    {
+      "adm1cd": "NGA031",
+      "adm1nm": "Oyo",
+      "file": "by_state/NGA031_Oyo_drainage.geojson",
+      "feature_count": 4168
+    },
+    {
+      "adm1cd": "NGA032",
+      "adm1nm": "Plateau",
+      "file": "by_state/NGA032_Plateau_drainage.geojson",
+      "feature_count": 570
+    },
+    {
+      "adm1cd": "NGA033",
+      "adm1nm": "Rivers",
+      "file": "by_state/NGA033_Rivers_drainage.geojson",
+      "feature_count": 2121
+    },
+    {
+      "adm1cd": "NGA034",
+      "adm1nm": "Sokoto",
+      "file": "by_state/NGA034_Sokoto_drainage.geojson",
+      "feature_count": 909
+    },
+    {
+      "adm1cd": "NGA035",
+      "adm1nm": "Taraba",
+      "file": "by_state/NGA035_Taraba_drainage.geojson",
+      "feature_count": 944
+    },
+    {
+      "adm1cd": "NGA036",
+      "adm1nm": "Yobe",
+      "file": "by_state/NGA036_Yobe_drainage.geojson",
+      "feature_count": 374
+    },
+    {
+      "adm1cd": "NGA037",
+      "adm1nm": "Zamfara",
+      "file": "by_state/NGA037_Zamfara_drainage.geojson",
+      "feature_count": 3158
+    }
+  ]
+}
