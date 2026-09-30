@@ -1,0 +1,44 @@
+name: Validate data foundation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate-foundation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install lightweight validation dependency
+        run: python -m pip install --upgrade requests
+
+      - name: Compile Python scripts
+        run: python -m compileall -q scripts
+
+      - name: Check GRID3 State endpoint
+        run: python scripts/01_download_sources.py --dataset state_boundaries --metadata-only
+
+      - name: Check GRID3 LGA endpoint
+        run: python scripts/01_download_sources.py --dataset lga_boundaries --metadata-only
+
+      - name: Check GRID3 Settlement Names endpoint
+        run: python scripts/01_download_sources.py --dataset settlement_names --metadata-only
+
+      - name: Check GRID3 Settlement Extents endpoint
+        run: python scripts/01_download_sources.py --dataset settlement_extents --metadata-only
+
+      - name: Check GRID3 Health Facilities endpoint
+        run: python scripts/01_download_sources.py --dataset health_v2 --metadata-only
+
+      - name: Check WorldPop required filenames
+        run: python scripts/01_download_sources.py --dataset worldpop_core --metadata-only
