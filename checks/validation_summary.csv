@@ -1,8 +1,14 @@
 check_id,status,details
 starter_repository,PASS,Repository scaffold and Stage-1 files committed to main
-python_syntax,PASS,GitHub Actions run 36706549844 compiled scripts successfully on 2026-09-30
-grid3_endpoint_metadata,PASS,State LGA Settlement Names Settlement Extents v4.1 and Health Facilities v2.0 endpoints responded successfully in GitHub Actions run 36706549844
-worldpop_required_filenames,PASS,Six required 2025 R2025A 100m constrained age-sex filenames resolved by preparation script in GitHub Actions run 36706549844
-sagbama_vector_pilot,PASS,"GitHub Actions run 36706846970 downloaded real vector data; 37 State/FCT records, 774 LGA/Area Council records, 6 FCT Area Councils; Bayelsa statecode BY; Sagbama lgacode 6006; bbox download returned 6820 settlement extents, 836 settlement-name points and 300 health-facility points"
-sagbama_population_pilot,PENDING,Six WorldPop rasters and fractional-overlap LGA/settlement aggregation not yet completed
-settlement_v4_1_licence,PENDING,Exact v4.1 redistribution licence still requires confirmation before public data packaging
+python_syntax,PASS,GitHub Actions validation workflows compile the preparation scripts successfully
+grid3_endpoint_metadata,PASS,State LGA Settlement Names Settlement Extents v4.1 and Health Facilities v2.0 endpoints resolve successfully
+worldpop_required_filenames,PASS,Six required 2025 R2025A 100m constrained age-sex filenames resolved by preparation script
+sagbama_vector_pilot,PASS,"Real vector smoke test returned 37 State/FCT records, 774 LGA/Area Council records and 6 FCT Area Councils; Bayelsa statecode BY; Sagbama lgacode 6006"
+sagbama_population_pilot,PASS,"GitHub Actions run 36707350042 processed six WorldPop rasters; total 183450.83; male 93309.96; female 90140.87; under1 4324.76; under5 20507.90; fractional-overlap method"
+sagbama_settlement_reconciliation,PASS,"832 settlement components; mapped-settlement population 154091.49 of 183450.83 total (84.00%); 29359.34 outside mapped settlement components; overlap check passed"
+sagbama_settlement_names,PASS_WITH_LIMITATION,"90 components had one contained name point; 57 had multiple; 685 unmatched; no forced nearest-name assignment"
+sagbama_health_facilities,PASS_WITH_LIMITATION,53 deduplicated coordinate-valid facility points strictly inside Sagbama; presence does not imply operational status or services
+sagbama_open_buildings_pilot,PASS,"GitHub Actions run 36709066830; 13638 thresholded/deduplicated detected footprints; 13578 allocated exactly once to mapped settlement components; 60 inside LGA but outside mapped settlement components"
+raw_third_party_data_in_git,PASS,No raw national third-party population or building data committed to Git history
+settlement_v4_1_licence,PENDING,"Exact v4.1 redistribution licence still requires confirmation; v4.0 is documented as CC BY-SA 4.0 but is not assumed to apply to v4.1"
+public_pilot_data_package,BLOCKED_BY_LICENCE,Do not publish v4.1-derived settlement geometry until exact v4.1 terms are confirmed
