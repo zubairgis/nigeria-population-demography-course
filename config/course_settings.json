@@ -1,0 +1,19 @@
+{
+  "country_iso3": "NGA",
+  "course_title": "Estimating Population and Demographic Characteristics in Nigeria Using Google Colab",
+  "population_reference_year": 2025,
+  "worldpop_release": "R2025A",
+  "worldpop_version": "v1",
+  "worldpop_resolution": "100m",
+  "population_units": "estimated people per grid square",
+  "pilot": {
+    "state_name": "Bayelsa",
+    "lga_name": "Sagbama"
+  },
+  "student_download_policy": "download selected state/LGA package only",
+  "aggregation": {
+    "method": "fractional pixel overlap",
+    "assumption": "population is uniformly distributed within each raster cell for partial-cell allocation",
+    "all_touched": false
+  }
+}
