@@ -22,7 +22,11 @@ def main():
     p.add_argument("--summary", help="Optional JSON allocation summary")
     args = p.parse_args()
 
-    b = gpd.read_file(args.buildings).to_crs(4326)
+    building_path = Path(args.buildings)
+    if building_path.suffix.lower() in {".parquet", ".geoparquet"}:
+        b = gpd.read_parquet(building_path).to_crs(4326)
+    else:
+        b = gpd.read_file(building_path).to_crs(4326)
     z = gpd.read_file(args.zones).to_crs(4326)
     if b.empty:
         raise ValueError("Building layer is empty.")
