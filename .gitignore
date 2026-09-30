@@ -9,6 +9,7 @@ work/
 cache/
 data/raw/
 data/processed_national/
+checks/smoke_output/
 *.tif
 *.tiff
 *.gpkg
