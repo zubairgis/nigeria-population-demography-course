@@ -17,18 +17,18 @@ As of 2026-09-30:
 - 53 deduplicated/coordinate-valid health-facility points were strictly inside the Sagbama LGA boundary;
 - the Google Open Buildings v3 Sagbama pilot **PASSED** in GitHub Actions run `36709066830`;
 - 13,638 detected building footprints passed the documented Google precision-threshold policy; 13,578 were allocated exactly once to mapped settlement components and 60 remained inside the LGA but outside mapped settlement components;
-- no nationwide third-party dataset has been downloaded into or committed to this repository;
-- no nationwide processing has been completed and no third-party national dataset has been uploaded to GitHub.
+- GRID3 NGA Settlement Extents **v3.1** has now been selected as the settlement baseline;
+- the official HDX v3.1 GeoPackage ZIP is mirrored as a versioned GitHub Release asset rather than committed to Git history;
+- no nationwide processing has yet been completed; raw national rasters and building footprints remain source-hosted.
 
 ## Current decision
 
-The **analytical Sagbama pilot has passed** the main boundary, population, demographic, settlement, building and health-facility validation checks.
+Use **GRID3 NGA Settlement Extents v3.1** for settlement polygons in this course.
+The v3.1 licence is verified as CC BY-SA 4.0, so the official ZIP may be mirrored
+to a GitHub Release with attribution and share-alike terms.
 
-Public packaging remains deliberately blocked because the exact redistribution licence for **GRID3 NGA Settlement Extents v4.1** has not yet been verified from the exact v4.1 metadata/release notes. GRID3 Settlement Extents v4.0 is documented as CC BY-SA 4.0, but that licence is not being silently transferred to v4.1.
+The preparation workflow is version-locked to v3.1. It no longer assumes the
+v4.x `block_id` schema; it validates the documented v3.1 fields and creates a
+deterministic geometry-based source identifier for processing.
 
-Until the v4.1 licence is confirmed:
-- do not publish v4.1-derived settlement geometries as repository or release assets;
-- keep raw national third-party data source-hosted;
-- continue developing code, manifests, validation summaries and non-redistributed instructor workflows.
-
-See `checks/pilot_validation_2026-09-30.md` for the evidence summary.
+National raw population rasters and Google Open Buildings remain source-hosted.
