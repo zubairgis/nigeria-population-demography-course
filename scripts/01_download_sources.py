@@ -1,6 +1,7 @@
 from __future__ import annotations
-import argparse, json
+import argparse, json, zipfile
 from pathlib import Path
+import geopandas as gpd
 from common import query_feature_layer_geojson, get_json, download_stream, sha256sum
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -10,7 +11,7 @@ DATASET_KEYS = {
     "state_boundaries": "grid3_state_boundaries",
     "lga_boundaries": "grid3_lga_boundaries",
     "settlement_names": "grid3_settlement_names",
-    "settlement_extents": "grid3_settlement_extents_v4_1",
+    "settlement_extents": "grid3_settlement_extents_v3_1",
     "health_v2": "grid3_health_facilities_v2",
 }
 
@@ -48,6 +49,44 @@ def validate_arcgis_layer(layer_url: str):
 def worldpop_urls():
     return {name: f"{WORLDPOP_BASE}/{name}" for name in WORLDPOP_REQUIRED}
 
+def _download_grid3_v31(record: dict, out: Path, bbox):
+    archive = out / record["archive_name"]
+    print("GRID3 release: NGA Settlement Extents v3.1")
+    print("DOI:", record["doi"])
+    print("HDX dataset:", record["dataset_page"])
+    print("HDX resource:", record["resource_page"])
+    print("Archive:", record["download_url"])
+
+    if not archive.exists():
+        download_stream(record["download_url"], archive)
+    print("Downloaded:", archive)
+    print("sha256:", sha256sum(archive))
+
+    extract_dir = out / "grid3_settlement_extents_v3_1"
+    extract_dir.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(archive) as z:
+        names = z.namelist()
+        wanted = record["expected_extent_file"]
+        candidates = [n for n in names if Path(n).name == wanted]
+        if not candidates:
+            raise RuntimeError(
+                f"Expected {wanted} not found in archive. Contents: {names[:20]}"
+            )
+        z.extract(candidates[0], extract_dir)
+        gpkg = extract_dir / candidates[0]
+
+    if bbox:
+        xmin, ymin, xmax, ymax = bbox
+        gdf = gpd.read_file(gpkg, bbox=(xmin, ymin, xmax, ymax)).to_crs(4326)
+        target = out / "settlement_extents.geojson"
+        gdf.to_file(target, driver="GeoJSON")
+        print("Saved pilot-area settlement extents:", len(gdf), "features ->", target)
+    else:
+        target = out / record["expected_extent_file"]
+        if target != gpkg:
+            target.write_bytes(gpkg.read_bytes())
+        print("Saved national GeoPackage:", target)
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--dataset", choices=list(DATASET_KEYS) + ["worldpop_core"], required=True)
@@ -75,21 +114,25 @@ def main():
     endpoints = load_endpoints()
     key = DATASET_KEYS[args.dataset]
     record = endpoints[key]
-    layer_url = record["layer_url"]
-
     print("Dataset key:", key)
+
+    if args.dataset == "settlement_extents":
+        print("Version locked to GRID3 NGA Settlement Extents v3.1.")
+        print("DOI:", record["doi"])
+        print("HDX resource:", record["resource_page"])
+        print("Direct ZIP:", record["download_url"])
+        if args.metadata_only:
+            return
+        _download_grid3_v31(record, out, tuple(args.bbox) if args.bbox else None)
+        return
+
+    layer_url = record["layer_url"]
     print("ArcGIS item:", record.get("item_id") or "not recorded")
     print("Layer URL:", layer_url)
     validate_arcgis_layer(layer_url)
 
     if args.metadata_only:
         return
-
-    if args.dataset == "settlement_extents" and not args.bbox:
-        raise SystemExit(
-            "Settlement extents are very large. Supply --bbox; "
-            "national bulk download is intentionally blocked."
-        )
 
     gj = query_feature_layer_geojson(
         layer_url,
