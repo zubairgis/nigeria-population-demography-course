@@ -1,0 +1,44 @@
+name: Cache GRID3 settlement names
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cache-grid3-settlement-names.yml"
+      - "scripts/11_cache_grid3_settlement_names.py"
+      - "config/source_endpoints.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cache:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install requests
+        run: python -m pip install requests
+
+      - name: Download GRID3 Settlement Names
+        run: python scripts/11_cache_grid3_settlement_names.py
+
+      - name: Commit cached settlement names
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/settlement_names
+          if git diff --cached --quiet; then
+            echo "No settlement-name changes to commit."
+          else
+            git commit -m "Cache GRID3 Nigeria settlement names"
+            git push
+          fi
