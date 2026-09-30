@@ -1,5 +1,5 @@
 from __future__ import annotations
-import argparse, json, zipfile
+import argparse, json, zipfile, shutil
 from pathlib import Path
 import geopandas as gpd
 from common import query_feature_layer_geojson, get_json, download_stream, sha256sum
@@ -84,7 +84,7 @@ def _download_grid3_v31(record: dict, out: Path, bbox):
     else:
         target = out / record["expected_extent_file"]
         if target != gpkg:
-            target.write_bytes(gpkg.read_bytes())
+            shutil.copy2(gpkg, target)
         print("Saved national GeoPackage:", target)
 
 def main():
