@@ -1,7 +1,6 @@
 from __future__ import annotations
 import argparse, json, zipfile, shutil
 from pathlib import Path
-import geopandas as gpd
 from common import query_feature_layer_geojson, get_json, download_stream, sha256sum
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -50,6 +49,7 @@ def worldpop_urls():
     return {name: f"{WORLDPOP_BASE}/{name}" for name in WORLDPOP_REQUIRED}
 
 def _download_grid3_v31(record: dict, out: Path, bbox):
+    import geopandas as gpd
     archive = out / record["archive_name"]
     print("GRID3 release: NGA Settlement Extents v3.1")
     print("DOI:", record["doi"])
