@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hensard University — Interstate Border Settlement Analysis</title>
+<style>
+:root{
+  --navy:#0b3d6e; --blue:#145b91; --gold:#d6a13a;
+  --bg:#f5f8fb; --card:#fff; --text:#17212b; --muted:#5f6b76;
+  --line:#dbe5ed; --ok:#1f7a5a; --warn:#9a5a00;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+header{
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  color:#fff;text-align:center;padding:34px 18px 28px;border-bottom:5px solid var(--gold)
+}
+header h1{margin:0;font-size:31px;font-weight:800}
+header h2{margin:18px 0 6px;font-size:24px}
+header p{margin:0 auto;max-width:850px;font-size:15px;opacity:.95}
+main{max-width:1000px;margin:28px auto 50px;padding:0 16px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 3px 12px rgba(20,50,75,.06);margin-bottom:20px
+}
+h3{margin:0 0 12px;color:var(--navy);font-size:21px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:block;font-weight:700;margin-bottom:6px;color:var(--navy)}
+select{
+  width:100%;min-height:46px;padding:10px 12px;border:1px solid #bfcbd5;
+  border-radius:8px;background:#fff;font-size:16px;color:var(--text)
+}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+button,a.btn{
+  appearance:none;border:0;border-radius:9px;padding:12px 18px;font-size:15px;
+  font-weight:700;cursor:pointer;text-decoration:none;display:inline-block
+}
+.primary{background:var(--navy);color:#fff}
+.secondary{background:#fff;color:var(--navy);border:1px solid var(--navy)!important}
+button:focus,select:focus,a:focus{outline:3px solid rgba(20,91,145,.22);outline-offset:2px}
+.status{
+  margin-top:14px;padding:11px 13px;border-radius:8px;background:#eef5fa;
+  color:#27445e;font-size:14px
+}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.step{border:1px solid var(--line);border-radius:10px;padding:14px;background:#fcfdfe}
+.step b{color:var(--navy)}
+.small{font-size:13px;color:var(--muted)}
+.result-list{margin:8px 0 0;padding-left:20px}
+.badge{display:inline-block;background:#edf7f1;color:var(--ok);padding:4px 9px;border-radius:20px;font-size:12px;font-weight:700}
+.notice{border-left:4px solid var(--gold);background:#fff8e8;padding:12px 14px;border-radius:8px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:10px 20px 30px}
+@media(max-width:720px){.grid,.steps{grid-template-columns:1fr}header h1{font-size:25px}header h2{font-size:20px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Hensard University</h1>
+  <p>Faculty of Environmental Sciences</p>
+  <h2>Interstate Border Settlement Analysis</h2>
+  <p>Select two neighbouring Nigerian States/FCTs, run the analysis in Google Colab, and receive border-LGA maps and synchronized CSV results.</p>
+</header>
+
+<main>
+  <section class="card">
+    <span class="badge">Step 1</span>
+    <h3 style="margin-top:10px">Select the two States/FCTs</h3>
+    <div class="grid">
+      <div>
+        <label for="state1">State/FCT 1</label>
+        <select id="state1"><option value="Abia">Abia</option>
+<option value="Adamawa">Adamawa</option>
+<option value="Akwa lbom">Akwa lbom</option>
+<option value="Anambra">Anambra</option>
+<option value="Bauchi">Bauchi</option>
+<option value="Bayelsa">Bayelsa</option>
+<option value="Benue">Benue</option>
+<option value="Borno">Borno</option>
+<option value="Cross River">Cross River</option>
+<option value="Delta">Delta</option>
+<option value="Ebonyi">Ebonyi</option>
+<option value="Edo">Edo</option>
+<option value="Ekiti">Ekiti</option>
+<option value="Enugu">Enugu</option>
+<option value="Federal Capital Territory">Federal Capital Territory</option>
+<option value="Gombe">Gombe</option>
+<option value="Imo">Imo</option>
+<option value="Jigawa">Jigawa</option>
+<option value="Kaduna">Kaduna</option>
+<option value="Kano">Kano</option>
+<option value="Katsina">Katsina</option>
+<option value="Kebbi">Kebbi</option>
+<option value="Kogi">Kogi</option>
+<option value="Kwara">Kwara</option>
+<option value="Lagos">Lagos</option>
+<option value="Nassarawa">Nassarawa</option>
+<option value="Niger">Niger</option>
+<option value="Ogun">Ogun</option>
+<option value="Ondo">Ondo</option>
+<option value="Osun">Osun</option>
+<option value="Oyo">Oyo</option>
+<option value="Plateau">Plateau</option>
+<option value="Rivers">Rivers</option>
+<option value="Sokoto">Sokoto</option>
+<option value="Taraba">Taraba</option>
+<option value="Yobe">Yobe</option>
+<option value="Zamfara">Zamfara</option></select>
+      </div>
+      <div>
+        <label for="state2">State/FCT 2</label>
+        <select id="state2"><option value="Abia">Abia</option>
+<option value="Adamawa">Adamawa</option>
+<option value="Akwa lbom">Akwa lbom</option>
+<option value="Anambra">Anambra</option>
+<option value="Bauchi">Bauchi</option>
+<option value="Bayelsa">Bayelsa</option>
+<option value="Benue">Benue</option>
+<option value="Borno">Borno</option>
+<option value="Cross River">Cross River</option>
+<option value="Delta">Delta</option>
+<option value="Ebonyi">Ebonyi</option>
+<option value="Edo">Edo</option>
+<option value="Ekiti">Ekiti</option>
+<option value="Enugu">Enugu</option>
+<option value="Federal Capital Territory">Federal Capital Territory</option>
+<option value="Gombe">Gombe</option>
+<option value="Imo">Imo</option>
+<option value="Jigawa">Jigawa</option>
+<option value="Kaduna">Kaduna</option>
+<option value="Kano">Kano</option>
+<option value="Katsina">Katsina</option>
+<option value="Kebbi">Kebbi</option>
+<option value="Kogi">Kogi</option>
+<option value="Kwara">Kwara</option>
+<option value="Lagos">Lagos</option>
+<option value="Nassarawa">Nassarawa</option>
+<option value="Niger">Niger</option>
+<option value="Ogun">Ogun</option>
+<option value="Ondo">Ondo</option>
+<option value="Osun">Osun</option>
+<option value="Oyo">Oyo</option>
+<option value="Plateau">Plateau</option>
+<option value="Rivers">Rivers</option>
+<option value="Sokoto">Sokoto</option>
+<option value="Taraba">Taraba</option>
+<option value="Yobe">Yobe</option>
+<option value="Zamfara">Zamfara</option></select>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="runBtn" class="primary" type="button">Run Analysis in Google Colab</button>
+      <a class="btn secondary" target="_blank" rel="noopener"
+         href="https://github.com/zubairgis/nigeria-population-demography-course">
+         View Data Repository
+      </a>
+    </div>
+
+    <div id="status" class="status" aria-live="polite">
+      Select two neighbouring States/FCTs. The default example is Bayelsa–Delta.
+    </div>
+  </section>
+
+  <section class="card">
+    <span class="badge">Step 2</span>
+    <h3 style="margin-top:10px">Run the analysis</h3>
+    <div class="steps">
+      <div class="step"><b>1. Colab opens</b><div class="small">Your selected States/FCTs are passed to the notebook automatically.</div></div>
+      <div class="step"><b>2. Choose Runtime → Run all</b><div class="small">The notebook verifies the shared border and processes the 5 km corridor.</div></div>
+      <div class="step"><b>3. Receive results</b><div class="small">At the end, the notebook creates and downloads the ZIP package automatically.</div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <span class="badge">Outputs</span>
+    <h3 style="margin-top:10px">What you will receive</h3>
+    <ul class="result-list">
+      <li>One shared-border overview map showing clipped border-sharing LGAs, LGA labels, roads, and rivers/streams.</li>
+      <li>One detailed panel for each LGA that shares the interstate border.</li>
+      <li>Settlement numbers synchronized with the Excel/CSV tables.</li>
+      <li>Roads, drainage, bridges, and place-name labels at LGA level.</li>
+      <li>Interstate settlement CSV, LGA summary CSV, State summary CSV, and separate CSV for each border LGA.</li>
+      <li>PNG maps and a final ZIP package.</li>
+    </ul>
+  </section>
+
+  <section class="notice">
+    <strong>Important:</strong> GitHub Pages is the student launcher. The geospatial processing itself runs in Google Colab because the analysis uses large spatial datasets and Python geoprocessing libraries.
+  </section>
+</main>
+
+<footer>Hensard University · Faculty of Environmental Sciences · Nigeria</footer>
+
+<script>
+(function(){
+  const s1=document.getElementById("state1");
+  const s2=document.getElementById("state2");
+  const btn=document.getElementById("runBtn");
+  const status=document.getElementById("status");
+
+  s1.value="Bayelsa";
+  s2.value="Delta";
+
+  btn.addEventListener("click",function(){
+    const a=s1.value;
+    const b=s2.value;
+
+    if(!a || !b){
+      status.textContent="Please select both States/FCTs.";
+      return;
+    }
+
+    if(a===b){
+      status.textContent="Please select two different States/FCTs.";
+      return;
+    }
+
+    const base="https://colab.research.google.com/github/zubairgis/nigeria-population-demography-course/blob/main/notebooks/02_Interstate_Border_Settlement_Corridor_5km.ipynb";
+    const url=base+"?state1="+encodeURIComponent(a)+"&state2="+encodeURIComponent(b);
+
+    status.textContent="Opening the analysis for "+a+" and "+b+". In Colab, choose Runtime → Run all.";
+    window.open(url,"_blank","noopener");
+  });
+})();
+</script>
+</body>
+</html>
