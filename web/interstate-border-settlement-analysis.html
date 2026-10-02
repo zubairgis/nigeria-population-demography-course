@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hensard University — Interstate Border Settlement Analysis</title>
+  <style>
+    :root{
+      --blue:#0b3d6e;
+      --blue2:#145b91;
+      --sky:#eaf4fb;
+      --gold:#d6a13a;
+      --text:#17212b;
+      --muted:#5f6b76;
+      --line:#dce5ec;
+      --card:#ffffff;
+      --bg:#f6f9fb;
+      --green:#1f7a5a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    header{
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      color:#fff;
+      padding:34px 20px 28px;
+      text-align:center;
+      border-bottom:5px solid var(--gold);
+    }
+    header .university{
+      font-size:30px;
+      font-weight:800;
+      letter-spacing:.4px;
+      margin:0;
+    }
+    header .faculty{
+      margin:5px 0 0;
+      font-size:15px;
+      opacity:.92;
+    }
+    header h1{
+      font-size:24px;
+      margin:22px auto 6px;
+      max-width:900px;
+      line-height:1.25;
+    }
+    header p{
+      margin:0 auto;
+      max-width:820px;
+      font-size:15px;
+      opacity:.95;
+    }
+    main{
+      max-width:1120px;
+      margin:28px auto 55px;
+      padding:0 18px;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:22px;
+      box-shadow:0 3px 12px rgba(20,50,75,.06);
+    }
+    h2{
+      color:var(--blue);
+      margin:0 0 12px;
+      font-size:21px;
+    }
+    h3{
+      color:var(--blue);
+      margin:0 0 7px;
+      font-size:16px;
+    }
+    .lead{
+      font-size:16px;
+      margin:0 0 14px;
+    }
+    .note{
+      background:var(--sky);
+      border-left:4px solid var(--blue2);
+      border-radius:8px;
+      padding:12px 14px;
+      color:#27445e;
+      font-size:14px;
+    }
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:22px;
+    }
+    .step{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:16px;
+    }
+    .num{
+      width:30px;
+      height:30px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      background:var(--blue);
+      color:#fff;
+      font-weight:700;
+      margin-bottom:9px;
+    }
+    .outputs{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+    .output{
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:13px 14px;
+      background:#fcfdfe;
+    }
+    .tag{
+      display:inline-block;
+      background:#eef6f1;
+      color:var(--green);
+      font-size:12px;
+      font-weight:700;
+      border-radius:20px;
+      padding:4px 9px;
+      margin-bottom:7px;
+    }
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      padding:12px 18px;
+      border-radius:9px;
+      font-weight:700;
+      font-size:14px;
+      border:1px solid transparent;
+    }
+    .btn-primary{
+      background:var(--blue);
+      color:white;
+    }
+    .btn-secondary{
+      background:white;
+      color:var(--blue);
+      border-color:var(--blue);
+    }
+    .small{
+      color:var(--muted);
+      font-size:13px;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:8px;
+      font-size:14px;
+    }
+    th,td{
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      padding:10px 8px;
+      vertical-align:top;
+    }
+    th{
+      color:var(--blue);
+      background:#f8fbfd;
+    }
+    footer{
+      text-align:center;
+      color:var(--muted);
+      padding:22px;
+      font-size:13px;
+    }
+    @media(max-width:820px){
+      .hero{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .outputs{grid-template-columns:1fr}
+      header .university{font-size:25px}
+      header h1{font-size:21px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="university">Hensard University</p>
+    <p class="faculty">Faculty of Environmental Sciences</p>
+    <h1>Interstate Border Settlement Analysis — 5 km Corridor</h1>
+    <p>
+      A practical geospatial exercise for examining settlements, accessibility,
+      infrastructure and service conditions along shared State/FCT borders in Nigeria.
+    </p>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="card">
+        <h2>Purpose of the Task</h2>
+        <p class="lead">
+          Select two neighbouring Nigerian States/FCTs and examine the settlements
+          located within <strong>5 km on both sides of their shared border</strong>.
+        </p>
+        <p>
+          The analysis identifies the LGAs that directly share the interstate boundary,
+          maps each border LGA separately, and creates synchronized settlement-number
+          tables for further analysis in Excel.
+        </p>
+        <div class="note">
+          The webpage does not display programming code. The analysis engine runs in
+          Google Colab using the validated datasets stored in the course GitHub repository.
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary"
+             href="https://colab.research.google.com/github/zubairgis/nigeria-population-demography-course/blob/main/notebooks/02_Interstate_Border_Settlement_Corridor_5km.ipynb"
+             target="_blank" rel="noopener">Start Analysis in Google Colab</a>
+          <a class="btn btn-secondary"
+             href="https://github.com/zubairgis/nigeria-population-demography-course"
+             target="_blank" rel="noopener">Open Course Repository</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Study Area Logic</h2>
+        <table>
+          <tr><th>Selection</th><td>Two neighbouring States/FCTs</td></tr>
+          <tr><th>Border zone</th><td>5 km inside each State/FCT</td></tr>
+          <tr><th>Administrative focus</th><td>Only LGAs that actually touch the shared border</td></tr>
+          <tr><th>Settlement source</th><td>GRID3 Nigeria Settlement Extents</td></tr>
+          <tr><th>Context layers</th><td>Roads, bridges, drainage, places and health facilities</td></tr>
+          <tr><th>Final products</th><td>PNG maps, CSV tables and ZIP package</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:22px">
+      <h2>Seven-Step Workflow</h2>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><h3>Prepare the Environment</h3><p class="small">Load the validated administrative and geospatial data sources.</p></div>
+        <div class="step"><span class="num">2</span><h3>Select Two States/FCTs</h3><p class="small">Choose the two administrative units to compare.</p></div>
+        <div class="step"><span class="num">3</span><h3>Build the Border Corridor</h3><p class="small">Verify adjacency and construct a 5 km zone on each side of the shared border.</p></div>
+        <div class="step"><span class="num">4</span><h3>Identify Border Settlements</h3><p class="small">Extract settlement components located inside the corridor.</p></div>
+        <div class="step"><span class="num">5</span><h3>Add Accessibility Layers</h3><p class="small">Include roads, bridges, drainage, places and mapped health facilities.</p></div>
+        <div class="step"><span class="num">6</span><h3>Synchronize Map and CSV</h3><p class="small">Assign settlement numbers within each border LGA and retain the same numbers in Excel-ready tables.</p></div>
+        <div class="step"><span class="num">7</span><h3>Export Dynamic Maps</h3><p class="small">Create one border overview plus one detailed panel for each border-sharing LGA.</p></div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:22px">
+      <h2>Map Design</h2>
+      <div class="outputs">
+        <div class="output">
+          <span class="tag">Overview Panel</span>
+          <h3>Shared Border and Border LGAs</h3>
+          <p class="small">Shows the shared State/FCT border, clipped border-sharing LGAs, LGA labels, roads and rivers/streams.</p>
+        </div>
+        <div class="output">
+          <span class="tag">Dynamic LGA Panels</span>
+          <h3>One Panel per Border-Sharing LGA</h3>
+          <p class="small">Shows settlement polygons, settlement numbers, roads, drainage, bridges and place-name labels.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:22px">
+      <h2>CSV Variables for Excel Analysis</h2>
+      <p>
+        The main settlement CSV is synchronized with the settlement numbers shown on the map.
+        It can be used for further analysis, sorting, filtering and development-planning exercises.
+      </p>
+      <table>
+        <tr><th>Variable</th><th>Use</th></tr>
+        <tr><td>LGA settlement number</td><td>Directly matches the number displayed in the corresponding LGA map panel.</td></tr>
+        <tr><td>State/FCT and LGA</td><td>Identifies the administrative side of the interstate border.</td></tr>
+        <tr><td>Settlement name</td><td>Retained in the CSV even though settlement-name labels are not shown on the map.</td></tr>
+        <tr><td>Settlement type</td><td>Helps distinguish different settlement forms.</td></tr>
+        <tr><td>Building count</td><td>Provides an indicator of settlement size and built-up intensity.</td></tr>
+        <tr><td>Distance to shared border</td><td>Measures how close the settlement is to the interstate boundary.</td></tr>
+        <tr><td>Nearest health facility and distance</td><td>Supports basic service-accessibility assessment.</td></tr>
+        <tr><td>Longitude and latitude</td><td>Allows settlement points to be reused in other mapping or field-planning applications.</td></tr>
+      </table>
+    </section>
+
+    <section class="card" style="margin-top:22px">
+      <h2>Expected Outputs</h2>
+      <div class="outputs">
+        <div class="output"><span class="tag">CSV</span><strong>Interstate settlement table</strong><br><span class="small">All border settlements with synchronized numbers and attributes.</span></div>
+        <div class="output"><span class="tag">CSV</span><strong>LGA and State summaries</strong><br><span class="small">Summary statistics for the selected interstate corridor.</span></div>
+        <div class="output"><span class="tag">PNG</span><strong>Dynamic multi-panel map</strong><br><span class="small">One overview panel plus one panel for each border-sharing LGA.</span></div>
+        <div class="output"><span class="tag">ZIP</span><strong>Complete result package</strong><br><span class="small">All PNG maps and CSV tables bundled together for download.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Hensard University · Faculty of Environmental Sciences · Nigeria
+  </footer>
+</body>
+</html>
